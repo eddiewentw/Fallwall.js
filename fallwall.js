@@ -159,41 +159,6 @@
 
 	}
 
-	function long_time_ago( past_time ) {
-
-		var time_str = "";
-
-		var nowTime = new Date(),
-			nowYear = nowTime.getFullYear(),
-			nowMonth = nowTime.getMonth() +1,
-			nowDate = nowTime.getDate(),
-			nowHour = nowTime.getHours(),
-			nowMinute = nowTime.getMinutes(),
-			nowSecond = nowTime.getSeconds();
-
-		var pastYear = past_time.substr( 0, 4 ),
-			pastMonth = past_time.substr( 5, 2 ),
-			pastDate = past_time.substr( 8, 2 ),
-			pastHour = past_time.substr( 11, 2 ),
-			pastMinute = past_time.substr( 14, 2 ),
-			pastSecond = past_time.substr( 17, 2 );
-
-		if( nowYear - pastYear >= 1 )
-			time_str = nowYear - pastYear + "年前";
-		else if( nowMonth - pastMonth >= 1 )
-			time_str = nowMonth - pastMonth + "月前";
-		else if( nowDate - pastDate >= 1 )
-			time_str = nowDate - pastDate + "天前";
-		else if( nowHour - pastHour >= 1 )
-			time_str = nowHour - pastHour + "小時前";
-		else if( nowMinute - pastMinute >= 1 )
-			time_str = nowMinute - pastMinute + "分鐘前";
-		else
-			time_str = nowSecond - pastSecond + "秒前";
-
-		return time_str;
-	}
-
 	function getShortest() {
 
 		var heightArray = [];
@@ -206,21 +171,6 @@
 		return $.inArray( min_of_array, heightArray );
 
 	}
-
-	function isThisEnglish( str ) {
-		var regExp = /^[\d|a-zA-Z]+$/;
-		if( regExp.test(str) )
-			return true; // english
-		else
-			return false; // chinese
-	}
-
-	function getlink(text) {
-		return Autolinker.link( text, {
-			stripPrefix: false
-		});
-	}
-
 
 }(jQuery));
 
