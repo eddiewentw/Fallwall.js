@@ -4,17 +4,18 @@
 					瀑 布 流
 	\* ---------------------------------- */
 
-	var sample_code, gridNumber, jdata_stored;
+	var sample_code, gridNumber, jdata_stored, dataNumber;
 	var currentGrid = 0;
 	var add_running = 0;
 
 	$.fn.initialize = function( framework, options, jdata, callback_func ) {
 
 		sample_code = '<div class="grid">' + framework + '</div>';
+		dataNumber = jdata['data'].length;
 
 		var settings = $.extend({
 			gridNumber: 20,
-			column_number: 1,
+			columnNumber: 1,
 			margin_left: '0px',
 			margin_right: '0px',
 			color: 'black'
@@ -22,15 +23,16 @@
 
 		gridNumber = settings.gridNumber;
 
-		for( var i = 0; i < settings.column_number; i++ ) {
-			this.append( '<div class="outline f-left"></div>' );
+		for( var i = 0; i < settings.columnNumber; i++ ) {
+			this.append( '<div class="outline"></div>' );
 		}
 
 		this.find('.outline').css({
+			'float': 'left',
 			'margin-left': settings.margin_left,
 			'margin-right': settings.margin_right,
 			'color': settings.color,
-			'width': ( this.width() - ( parseInt(settings.margin_left) + parseInt(settings.margin_right) +10 ) *settings.column_number ) / settings.column_number
+			'width': ( this.width() - ( parseInt(settings.margin_left) + parseInt(settings.margin_right) +4 ) *settings.columnNumber ) / settings.columnNumber
 		});
 
 		setContent( jdata, callback_func );
@@ -117,15 +119,10 @@
 	function setContent( jdata, callback_func ) {
 
 		for( var i = currentGrid; i < gridNumber; i++ ) {
-
 			if( typeof jdata['data'][i] != "undefined" ) {
-
 				createGrid( i, jdata, 'down' );
-
 				currentGrid = i;
-
 			}
-
 		}
 
 		if( callback_func != null )
@@ -134,27 +131,20 @@
 	}
 
 	function createGrid( i, data, direction ) {
+
 		var shortest = getShortest();
-		if( direction == 'down' ) {
-			$('.outline').eq( shortest ).append( sample_code );
-			var creatingElement = $('.outline').eq( shortest ).find('.grid').last();
-		} else {
-			$('.outline').eq( shortest ).prepend( sample_code );
-			var creatingElement = $('.outline').eq( shortest ).find('.grid').first();
-			creatingElement.append('<div class="delete post"></div>');
+		var thisCode = sample_code;
+
+		for( var j = 0; j < dataNumber; j++ ) {
+			thisCode = thisCode.replace( 'fallwall_#'+(j+1), data['data'][i][j] );
 		}
 
-			creatingElement.attr( 'rel', data['data'][i]['pid'] );
-			creatingElement.find('a').attr( 'href', './profile.php?id=' + data['data'][i]['senderid'] );
-			creatingElement.find('.author img').attr( 'src', './images/profile/' + data['data'][i]['senderid'] + '/sticker.png' );
-			creatingElement.find('.author .name').text( isThisEnglish( data['data'][i]['l_name'] ) ? data['data'][i]['f_name'] + " " + data['data'][i]['l_name'] : data['data'][i]['l_name'] + data['data'][i]['f_name'] );
-			creatingElement.find('.author .time_ago').text( long_time_ago( data['data'][i]['updatetime'] ) );
-			creatingElement.find('.post_content').html( getlink( data['data'][i]['p_content'] ) );
-			creatingElement.find('.more-msg .num').text( data['data'][i]['count_comment'] );
-			creatingElement.addClass('animated zoomIn');
-
-		if( data['data'][i]['senderid'] == data['delete_able'] ) {
-			creatingElement.append('<div class="delete post"></div>');
+		if( direction == 'down' ) {
+			$('.outline').eq( shortest ).append( thisCode );
+			var creatingElement = $('.outline').eq( shortest ).find('.grid').last();
+		} else {
+			$('.outline').eq( shortest ).prepend( thisCode );
+			var creatingElement = $('.outline').eq( shortest ).find('.grid').first();
 		}
 
 	}
