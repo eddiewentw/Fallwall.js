@@ -20,7 +20,7 @@
 			margin_left: '0px',
 			margin_right: '0px',
 			color: 'black',
-			enterAnimation: 'animated bounce'
+			enterAnimation: 'animated zoomIn'
 		}, options);
 
 		for( var i = 0; i < settings.columnNumber; i++ ) {
