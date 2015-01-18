@@ -4,24 +4,24 @@
 					瀑 布 流
 	\* ---------------------------------- */
 
-	var sample_code, gridNumber, jdata_stored, dataNumber;
+	var settings, sample_code, jdata_stored, dataNumber, fatherBox;
 	var currentGrid = 0;
-	var add_running = 0;
+	var its_running = 0;
 
 	$.fn.initialize = function( framework, options, jdata, callback_func ) {
 
 		sample_code = '<div class="grid">' + framework + '</div>';
 		dataNumber = jdata['data'].length;
+		fatherBox = this;
 
-		var settings = $.extend({
+		settings = $.extend({
 			gridNumber: 20,
 			columnNumber: 1,
 			margin_left: '0px',
 			margin_right: '0px',
-			color: 'black'
+			color: 'black',
+			enterAnimation: 'animated zoomIn'
 		}, options);
-
-		gridNumber = settings.gridNumber;
 
 		for( var i = 0; i < settings.columnNumber; i++ ) {
 			this.append( '<div class="outline"></div>' );
@@ -44,14 +44,14 @@
 
 		var plugin_status = 0;
 
-		if( add_running == 0 ) {
+		if( its_running == 0 ) {
 
 			if( currentGrid +1 < jdata_stored['data'].length ) {
 
-				add_running = 1;
+				its_running = 1;
 
 				currentGrid++;
-				var limitNum = currentGrid  + gridNumber;
+				var limitNum = currentGrid  + settings.gridNumber;
 				for( var i = currentGrid; i < limitNum; i++ ) {
 
 					if( typeof jdata_stored['data'][i] != "undefined" ) {
@@ -84,13 +84,13 @@
 
 		switch( plugin_status ) {
 			case 1:
-					add_running = 0;
+					its_running = 0;
 					if( more_callback != null )
 						more_callback();
 					return "oh_no";
 				break;
 			case 2:
-					add_running = 0;
+					its_running = 0;
 					if( more_callback != null )
 						more_callback();
 					return "finish";
@@ -118,12 +118,14 @@
 
 	function setContent( jdata, callback_func ) {
 
-		for( var i = currentGrid; i < gridNumber; i++ ) {
+		for( var i = currentGrid; i < settings.gridNumber; i++ ) {
 			if( typeof jdata['data'][i] != "undefined" ) {
 				createGrid( i, jdata, 'down' );
 				currentGrid = i;
 			}
 		}
+
+		fatherBox.append('<br class="endline" style="clear: both;" />');
 
 		if( callback_func != null )
 			callback_func();
@@ -147,8 +149,12 @@
 			var creatingElement = $('.outline').eq( shortest ).find('.grid').first();
 		}
 
+		if( settings.enterAnimation != '' )
+			creatingElement.addClass( settings.enterAnimation );
+
 	}
 
+	// get the shortest 'outline' div
 	function getShortest() {
 
 		var heightArray = [];
