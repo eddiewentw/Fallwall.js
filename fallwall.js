@@ -10,7 +10,7 @@
 
 	$.fn.initialize = function( framework, options, jdata, callback_func ) {
 
-		sample_code = '<div class="grid">' + framework + '</div>';
+		sample_code = '<div class="fallwall_grid">' + framework + '</div>';
 		dataNumber = jdata['data'].length;
 		fatherBox = this;
 
@@ -20,7 +20,7 @@
 			margin_left: '0px',
 			margin_right: '0px',
 			color: 'black',
-			enterAnimation: 'animated zoomIn'
+			enterAnimation: 'animated bounce'
 		}, options);
 
 		for( var i = 0; i < settings.columnNumber; i++ ) {
@@ -35,7 +35,7 @@
 			'width': ( this.width() - ( parseInt(settings.margin_left) + parseInt(settings.margin_right) +4 ) *settings.columnNumber ) / settings.columnNumber
 		});
 
-		setContent( jdata, callback_func );
+		setContentAtFirst( jdata, callback_func );
 		jdata_stored = jdata;
 
 	};
@@ -116,7 +116,7 @@
 
 	};
 
-	function setContent( jdata, callback_func ) {
+	function setContentAtFirst( jdata, callback_func ) {
 
 		for( var i = currentGrid; i < settings.gridNumber; i++ ) {
 			if( typeof jdata['data'][i] != "undefined" ) {
@@ -143,10 +143,10 @@
 
 		if( direction == 'down' ) {
 			$('.outline').eq( shortest ).append( thisCode );
-			var creatingElement = $('.outline').eq( shortest ).find('.grid').last();
+			var creatingElement = $('.outline').eq( shortest ).find('.fallwall_grid').last();
 		} else {
 			$('.outline').eq( shortest ).prepend( thisCode );
-			var creatingElement = $('.outline').eq( shortest ).find('.grid').first();
+			var creatingElement = $('.outline').eq( shortest ).find('.fallwall_grid').first();
 		}
 
 		if( settings.enterAnimation != '' )
@@ -169,5 +169,4 @@
 	}
 
 }(jQuery));
-
 
