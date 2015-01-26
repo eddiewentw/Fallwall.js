@@ -8,7 +8,7 @@
 	var currentGrid = 0;
 	var its_running = 0;
 
-	$.fn.initialize = function( framework, options, jdata, callback_func ) {
+	$.fn.fallwall_init = function( framework, options, jdata, callback_func ) {
 
 		sample_code = '<div class="fallwall_grid">' + framework + '</div>';
 		dataNumber = jdata['data'].length;
