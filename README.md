@@ -32,7 +32,15 @@ It's a jQuery plugin for the style of fall like Pinterest.
 ```
 而我會依序JSON的排列順序替換模型HTML code中的fallwall_#?部分
 
-至於在設定的部分，你可以設定gridNumber(每次要跑出的數量)、columnNumber(要切割為幾個直欄)、margin_left(每個直欄的margin left)、margin_right(每個直欄的margin right)、color(其中的文字顏色)、enterAnimation(每則內容進入的特效)
+至於在設定的部分，你可以設定
+<ul>
+   <li>gridNumber(每次要跑出的數量)</li>
+   <li>columnNumber(要切割為幾個直欄)</li>
+   <li>margin_left(每個直欄的margin left)</li>
+   <li>margin_right(每個直欄的margin right)</li>
+   <li>color(其中的文字顏色)</li>
+   <li>enterAnimation(每則內容進入的特效)</li>
+</ul>
 
 目前在enterAnimation預設是搭配animate.css使用，他能夠僅以套上css class的方式產生漂亮的動畫效果，如果不喜歡也可以移除它，這裡僅是替每則內容加上class
 
@@ -51,7 +59,7 @@ fallwall_init( framework, options, jdata, callback ){}
       margin_left: '5px',
       margin_right: '5px'
  }, fallwall_data, function(){
-      alert("Complete!");
+      alert("OVER!");
  });
 ```
 
@@ -68,7 +76,9 @@ giveMeMore( callback ){}
 如：
 
 ```javascript
- $('.box').giveMeMore();
+ $('.box').giveMeMore( function(){
+      alert("OVER!");
+ });
 ```
 
 最後一個則是 <h4>addNewGrid</h4>
@@ -76,3 +86,13 @@ giveMeMore( callback ){}
 addNewGrid( jdata, callback ){}
 
 這會直接插入一個新的內容，但會在瀑布流的最上方出現，這裡 jdata 的格式就跟上面的格式一樣就行了。
+
+如：
+
+```javascript
+  $('.box').addNewGrid( { "data": [
+       { 0: "Mandy Chen", 1: "Hi~ I'm Mandy.", 2: "class_new" }
+  ]}, function(){
+       alert("OVER!");
+  });
+```
