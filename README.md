@@ -2,7 +2,18 @@
 
 This is a jQuery plugin for Fall Styles like Pinterest.
 
-這是一個幫助你完成瀑布流的 jQuery 插件
+這是一個幫助你完成瀑布流的 jQuery 插件。
+
+在開始前別忘了
+
+```html
+    <!-- don't forget the jQuery -->
+	<script type="text/javascript" src="./lib/jquery.min.js"></script>
+	<!-- fallwall -->
+	<script type="text/javascript" src="./lib/fallwall/fallwall.js"></script>
+	<!-- you could delete it -->
+	<link rel="stylesheet" type="text/css" href="./lib/fallwall/animate.css">
+```
 
 插件會將你選擇的外框分割成你想要的數量的直欄div，並以 classname = "outline" 命名。
 
