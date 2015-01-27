@@ -45,6 +45,7 @@ It's a jQuery plugin for the style of fall like Pinterest.
 </ul>
 
 目前在 enterAnimation 預設是搭配 animate.css 使用，他能夠僅以套上 css class 的方式產生漂亮的動畫效果，如果不喜歡也可以移除它，這裡僅是替每則內容加上 class
+
 （ Animate.css -> http://daneden.github.io/animate.css/ ）
 
 ******************************
