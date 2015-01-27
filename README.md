@@ -68,7 +68,13 @@ fallwall_init( framework, options, jdata, callback ){}
  });
 ```
 
-我將 <div class=“box”></div> 分割成三個直欄，並且設定成每次僅跑出四則內容，然後設定在完成後跳出alert。
+我將
+
+```html
+<div class='box'></div>
+```
+
+分割成三個直欄，並且設定成每次僅跑出四則內容，然後設定在完成後跳出alert。
 
 而 fallwall_data 就是前面所舉的 JSON 例子
 
