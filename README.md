@@ -4,15 +4,16 @@ This is a jQuery plugin for Fall Styles like Pinterest.
 
 這是一個幫助你完成瀑布流的 jQuery 插件
 
-插件會將你選擇的外框分割成你想要的數量的直欄div，並以classname=“outline”命名。
+插件會將你選擇的外框分割成你想要的數量的直欄div，並以 classname = "outline" 命名。
 
-當中每一則內容都會再以classname=“fallwall_grid”的div包住
+當中每一則內容都會再以 classname = "fallwall_grid" 的 div 包住
 
-之後可以透過這兩個classname再調整css
+之後可以透過這兩個 classname 再調整 css
 
-其中比較特別的一點是，會需要一組HTML碼作為每一則內容的原型
+其中比較特別的一點是，會需要一組 HTML 碼作為每一則內容的原型
 
 以此為例：
+
 ```html
    <div class="template">
         <h4 class="fallwall_#3">fallwall_#1</h4>
@@ -33,6 +34,23 @@ This is a jQuery plugin for Fall Styles like Pinterest.
 ```
 
 之後會依序 JSON 的排列順序替換 HTML code 模型中的 fallwall_#? 部分
+
+因此會得到三個如下的 div
+
+```html
+   <div class="fallwall_grid">
+        <h4 class="class_Wen">Eddie Wen</h4>
+        <div class="intro">Hi~ I'm Eddie.</div>
+   </div>
+   <div class="fallwall_grid">
+        <h4 class="class_Liu">Jason Liu</h4>
+        <div class="intro">Hi~ I'm Jason.</div>
+   </div>
+   <div class="fallwall_grid">
+        <h4 class="class_Wang">Steve Wang</h4>
+        <div class="intro">Hi~ I'm Steve.</div>
+   </div>
+```
 
 至於在設定的部分，可以設定
 <ul>
