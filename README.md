@@ -36,12 +36,12 @@ It's a jQuery plugin for the style of fall like Pinterest.
 
 至於在設定的部分，可以設定
 <ul>
-   <li>gridNumber (每次要跑出的數量)</li>
-   <li>columnNumber (要切割為幾個直欄)</li>
-   <li>margin_left (每個直欄的margin left)</li>
-   <li>margin_right (每個直欄的margin right)</li>
-   <li>color (其中的文字顏色)</li>
-   <li>enterAnimation (每則內容進入的特效)</li>
+   <li>gridNumber ( 每次要跑出的數量 )</li>
+   <li>columnNumber ( 要切割為幾個直欄 )</li>
+   <li>margin_left ( 每個直欄的margin left )</li>
+   <li>margin_right ( 每個直欄的margin right )</li>
+   <li>color ( 其中的文字顏色 )</li>
+   <li>enterAnimation ( 每則內容進入的特效 )</li>
 </ul>
 
 目前在 enterAnimation 預設是搭配 animate.css 使用，他能夠僅以套上 css class 的方式產生漂亮的動畫效果，如果不喜歡也可以移除它，這裡僅是替每則內容加上 class
@@ -52,7 +52,7 @@ It's a jQuery plugin for the style of fall like Pinterest.
 
 接下來是插件裏的 function 使用
 
-第一個是 <h4>fallwall_init</h4>
+第一個是 <h4>fallwall_init()</h4>
 
 fallwall_init( framework, options, jdata, callback ){}
 
@@ -81,7 +81,7 @@ fallwall_init( framework, options, jdata, callback ){}
 
 ******************************
 
-再來是 <h4>giveMeMore</h4>
+再來是 <h4>giveMeMore()</h4>
 
 giveMeMore( callback ){}
 
@@ -97,7 +97,7 @@ giveMeMore( callback ){}
 
 ******************************
 
-最後一個則是 <h4>addNewGrid</h4>
+最後一個則是 <h4>addNewGrid()</h4>
 
 addNewGrid( jdata, callback ){}
 
