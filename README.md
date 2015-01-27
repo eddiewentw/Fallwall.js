@@ -59,7 +59,7 @@ fallwall_init( framework, options, jdata, callback ){}
 如：
 
 ```javascript
- $('.box').initialize( $('.template').html(), {
+ $('.box').fallwall_init( $('.template').html(), {
       gridNumber: 4,
       columnNumber: 3,
       margin_left: '5px',
