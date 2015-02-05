@@ -30,7 +30,7 @@ $(window).load( function(){
 	$(window).scroll( function(){
 
 		var scrollNow = $(window).scrollTop();
-		if( scrollNow >= $('body').height() - $(window).height() -10 ) {
+		if( scrollNow >= $('body').height() - $(window).height() +60 ) {
 			$('.box').giveMeMore();
 		}
 
