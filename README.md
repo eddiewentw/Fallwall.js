@@ -1,5 +1,7 @@
 <h2>FALLWALL.js</h2>
 
+[DEMO](http://eddiewen-taiwan.github.io/fallwall/)
+
 This is a jQuery plugin for Fall Styles like Pinterest.
 
 這是一個幫助你完成瀑布流的 jQuery 插件。
