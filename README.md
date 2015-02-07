@@ -1,6 +1,6 @@
 <h2>FALLWALL.js</h2>
 
-[DEMO](http://eddiewen-taiwan.github.io/fallwall/)
+[DEMO page](http://eddiewen-taiwan.github.io/fallwall/)
 
 This is a jQuery plugin for Fall Styles like Pinterest.
 
@@ -34,19 +34,19 @@ This is a jQuery plugin for Fall Styles like Pinterest.
    </div>
 ```
 
-再使用 $('.template').html() 將這段原始碼丟入插件，會以此為模型並依序將其中的 fallwall_#? 替換成之後拿到的 JSON 中的內容
+再使用 $('.template').html() 將這段原始碼丟入插件，會以此為模型並依序將其中的 fallwall_#? 替換成之後拿到的 Array 中的內容
 
-若以上述為例子，接下來傳進插件內的 JSON 會是像以下的格式：
+若以上述為例子，接下來傳進插件內的 Array 會是像以下的格式：
 
 ```javascript
-  var fallwall_data = { "data" : [
+  var fallwall_data = [
          { 0: "Eddie Wen",  1: "Hi~ I'm Eddie.",   2: "class_Wen" },
          { 0: "Jason Liu",  1: "Hi~ I'm Jason.",   2: "class_Liu" },
          { 0: "Steve Wang",  1: "Hi~ I'm Steve.",   2: "class_Wang" }
-  ]}
+  ];
 ```
 
-之後會依序 JSON 的排列順序替換 HTML code 模型中的 fallwall_#? 部分
+之後會依序 Array 的排列順序替換 HTML code 模型中的 fallwall_#? 部分
 
 因此會得到三個如下的 div
 
@@ -85,7 +85,7 @@ This is a jQuery plugin for Fall Styles like Pinterest.
 
 第一個是 <h4>fallwall_init()</h4>
 
-fallwall_init( framework, options, jdata, callback ){}
+fallwall_init( framework, options, dataArray, callback ){}
 
 如：
 
@@ -108,7 +108,7 @@ fallwall_init( framework, options, jdata, callback ){}
 
 分割成三個直欄，並且設定成每次僅跑出四則內容，然後設定在完成後跳出alert。
 
-而 fallwall_data 就是前面所舉的 JSON 例子
+而 fallwall_data 就是前面所舉的 Array 例子
 
 ******************************
 
@@ -116,7 +116,7 @@ fallwall_init( framework, options, jdata, callback ){}
 
 giveMeMore( callback ){}
 
-大多用在使用者將畫面滑至底部時呼叫，會將先前所傳入的 JSON 帶出更多內容來，但數量依然是原本在 init 時所設定的 gridNumber。
+大多用在使用者將畫面滑至底部時呼叫，會將先前所傳入的 Array 帶出更多內容來，但數量依然是原本在 init 時所設定的 gridNumber。
 
 如：
 
@@ -130,16 +130,16 @@ giveMeMore( callback ){}
 
 最後一個則是 <h4>addNewGrid()</h4>
 
-addNewGrid( jdata, callback ){}
+addNewGrid( dataArray, callback ){}
 
-這會直接插入一個新的內容，但會在瀑布流的最上方出現，這裡 jdata 的格式就跟上面的格式一樣就行了。
+這會直接插入一個新的內容，但會在瀑布流的最上方出現，這裡 dataArray 的格式就跟上面的格式一樣就行了。
 
 如：
 
 ```javascript
-  $('.box').addNewGrid( { "data": [
+  $('.box').addNewGrid( [
        { 0: "Mandy Chen", 1: "Hi~ I'm Mandy.", 2: "class_new" }
-  ]}, function(){
+  ], function(){
        alert("OVER!");
   });
 ```
