@@ -51,7 +51,7 @@
 				its_running = 1;
 
 				currentGrid++;
-				var limitNum = currentGrid  + settings.gridNumber;
+				var limitNum = currentGrid + settings.gridNumber;
 				for( var i = currentGrid; i < limitNum; i++ ) {
 
 					if( typeof dataArray_stored[i] != "undefined" ) {
