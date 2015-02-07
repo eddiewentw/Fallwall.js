@@ -4,14 +4,14 @@
 					瀑 布 流
 	\* ---------------------------------- */
 
-	var settings, sample_code, jdata_stored, dataNumber, fatherBox;
+	var settings, sample_code, dataArray_stored, dataNumber, fatherBox;
 	var currentGrid = 0;
 	var its_running = 0;
 
-	$.fn.fallwall_init = function( framework, options, jdata, callback_func ) {
+	$.fn.fallwall_init = function( framework, options, dataArray, callback_func ) {
 
 		sample_code = '<div class="fallwall_grid">' + framework + '</div>';
-		dataNumber = jdata['data'].length;
+		dataNumber = dataArray.length;
 		fatherBox = this;
 
 		settings = $.extend({
@@ -35,8 +35,8 @@
 			'width': ( this.width() - ( parseInt(settings.margin_left) + parseInt(settings.margin_right) +4 ) *settings.columnNumber ) / settings.columnNumber
 		});
 
-		setContentAtFirst( jdata, callback_func );
-		jdata_stored = jdata;
+		setContentAtFirst( dataArray, callback_func );
+		dataArray_stored = dataArray;
 
 	};
 
@@ -46,7 +46,7 @@
 
 		if( its_running == 0 ) {
 
-			if( currentGrid +1 < jdata_stored['data'].length ) {
+			if( currentGrid +1 < dataArray_stored.length ) {
 
 				its_running = 1;
 
@@ -54,9 +54,9 @@
 				var limitNum = currentGrid  + settings.gridNumber;
 				for( var i = currentGrid; i < limitNum; i++ ) {
 
-					if( typeof jdata_stored['data'][i] != "undefined" ) {
+					if( typeof dataArray_stored[i] != "undefined" ) {
 
-						createGrid( i, jdata_stored, 'down' );
+						createGrid( i, dataArray_stored, 'down' );
 						currentGrid = i;
 
 					} else {
@@ -107,20 +107,20 @@
 
 	};
 
-	$.fn.addNewGrid = function( jdata, callback_func ) {
+	$.fn.addNewGrid = function( dataArray, callback_func ) {
 
-		createGrid( 0, jdata, 'up' );
+		createGrid( 0, dataArray, 'up' );
 
 		if( callback_func != null )
 			callback_func();
 
 	};
 
-	function setContentAtFirst( jdata, callback_func ) {
+	function setContentAtFirst( dataArray, callback_func ) {
 
 		for( var i = currentGrid; i < settings.gridNumber; i++ ) {
-			if( typeof jdata['data'][i] != "undefined" ) {
-				createGrid( i, jdata, 'down' );
+			if( typeof dataArray[i] != "undefined" ) {
+				createGrid( i, dataArray, 'down' );
 				currentGrid = i;
 			}
 		}
@@ -138,7 +138,7 @@
 		var thisCode = sample_code;
 
 		for( var j = 0; j < dataNumber; j++ ) {
-			thisCode = thisCode.replace( 'fallwall_#'+(j+1), data['data'][i][j] );
+			thisCode = thisCode.replace( 'fallwall_#'+(j+1), data[i][j] );
 		}
 
 		if( direction == 'down' ) {
