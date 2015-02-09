@@ -32,7 +32,8 @@
 		.box {
 			width: 85%;
 			min-height: 100px;
-			margin: 150px auto;
+			margin: 0px auto;
+			margin-bottom: 150px;
 			border-top: 3px #c0c0c0 solid;
 		}
 
@@ -58,6 +59,22 @@
 			color: #474747;
 		}
 
+		.add-btn {
+			width: 100px;
+			margin: 150px 10% 20px auto;
+			padding: 10px 0px;
+			text-align: center;
+			border: 1px #d0d0d0 solid;
+			border-radius: 5px;
+			background-color: #f9f9f9;
+			cursor: pointer;
+		}
+
+		.add-btn:hover {
+			color: white;
+			background-color: #c0c0c0;
+		}
+
 	</style>
 
 </head>
@@ -71,6 +88,7 @@
 		<div class="intro">fallwall_#2</div>
 	</div>
 
+	<div class="add-btn" onclick="more()">Add +</div>
 	<div class="box">
 		<!-- ... -->
 		<!-- ... -->
