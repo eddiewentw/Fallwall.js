@@ -32,7 +32,7 @@
 			'margin-left': settings.margin_left,
 			'margin-right': settings.margin_right,
 			'color': settings.color,
-			'width': ( this.width() - ( parseInt(settings.margin_left) + parseInt(settings.margin_right) +4 ) *settings.columnNumber ) / settings.columnNumber
+			'width': Math.floor( ( this.width() - ( parseInt(settings.margin_left) + parseInt(settings.margin_right) +0 ) *settings.columnNumber ) / settings.columnNumber )
 		});
 
 		setContentAtFirst( dataArray, callback_func );
