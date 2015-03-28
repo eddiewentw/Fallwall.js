@@ -32,7 +32,11 @@
 			'margin-left': settings.margin_left,
 			'margin-right': settings.margin_right,
 			'color': settings.color,
+<<<<<<< HEAD
 			'width': Math.floor( ( this.width() - ( parseInt(settings.margin_left) + parseInt(settings.margin_right) +0 ) *settings.columnNumber ) / settings.columnNumber )
+=======
+			'width': Math.floor( ( this.width() - ( parseInt(settings.margin_left) + parseInt(settings.margin_right) +4 ) *settings.columnNumber ) / settings.columnNumber )
+>>>>>>> efaf4086fc5ae57801f692daf1b7d8a4cbc5ca48
 		});
 
 		setContentAtFirst( dataArray, callback_func );
