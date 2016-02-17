@@ -1,6 +1,6 @@
 ## FALLWALL.js
 
-[Fallwall DEMO](http://eddiewen-taiwan.github.io/fallwall.js/)
+[Fallwall DEMO](http://github.eddiewen.me/fallwall.js/)
 
 This is a jQuery plugin for Fall Styles like Pinterest.
 
