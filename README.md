@@ -1,4 +1,4 @@
-<h2>FALLWALL.js</h2>
+## FALLWALL.js
 
 [Fallwall DEMO](http://eddiewen-taiwan.github.io/fallwall.js/)
 
