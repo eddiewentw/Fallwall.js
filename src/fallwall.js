@@ -24,10 +24,10 @@
 		}, options);
 
 		for( var i = 0; i < settings.columnNumber; i++ ) {
-			this.append( '<div class=\'fw_outline\'></div>' );
+			this.append( '<div class=\'fw_column\'></div>' );
 		}
 
-		this.find('.fw_outline').css({
+		this.find('.fw_column').css({
 			'float': 'left',
 			'margin-left': settings.margin_left,
 			'margin-right': settings.margin_right,
@@ -146,12 +146,12 @@
 		}
 
 		if( direction == 'down' ) {
-			$('.fw_outline').eq( shortest ).append( thisCode );
-			var creatingElement = $('.fw_outline').eq( shortest ).find('.fw_grid').last();
+			$('.fw_column').eq( shortest ).append( thisCode );
+			var creatingElement = $('.fw_column').eq( shortest ).find('.fw_grid').last();
 		}
 		else {
-			$('.fw_outline').eq( shortest ).prepend( thisCode );
-			var creatingElement = $('.fw_outline').eq( shortest ).find('.fw_grid').first();
+			$('.fw_column').eq( shortest ).prepend( thisCode );
+			var creatingElement = $('.fw_column').eq( shortest ).find('.fw_grid').first();
 		}
 
 		if( settings.enterAnimation != '' ) {
@@ -160,12 +160,12 @@
 
 	}
 
-	// get the shortest '.fw_outline'
+	// get the shortest '.fw_column'
 	function _getShortestCol() {
 
 		var heightArray = [];
 
-		$.each( $('.fw_outline'), function(index, element) {
+		$.each( $('.fw_column'), function(index, element) {
 			heightArray.push( element.offsetHeight );
 		});
 

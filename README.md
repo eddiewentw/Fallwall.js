@@ -33,11 +33,11 @@ Example:
 
 *fallwall\_#1, fallwall\_#2... fallwall\_? will be replace with your data.*
 
-Your each content will be wrapped in `<div class="fw_grid"></div>`, and they are wrapped in `<div class="fw_outline"></div>`, all of these are in your element. You could control them with classname `fw_outline` & `fw_grid`.
+Your each content will be wrapped in `<div class="fw_grid"></div>`, and they are wrapped in `<div class="fw_column"></div>`, all of these are in your element. You could control them with classname `fw_column` & `fw_grid`.
 
 ~~~html
 <div id="your-element">
-	<div class="fw_outline">
+	<div class="fw_column">
 			<div class="fw_grid">
 				<div class="template">
 					<h4 class="fallwall_#3">fallwall_#1</h4>
@@ -51,7 +51,7 @@ Your each content will be wrapped in `<div class="fw_grid"></div>`, and they are
 				</div>
 			</div>
 	</div>
-	<div class="fw_outline">
+	<div class="fw_column">
 			<div class="fw_grid">
 				<div class="template">
 					<h4 class="fallwall_#3">fallwall_#1</h4>
