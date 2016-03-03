@@ -21,7 +21,8 @@ This is a jQuery plugin to make Fall Styles like Pinterest.
 
 ### How to
 
-First, you need to prepare a HTML template. Later Fallwall.js uses it to build content. Example:
+First, you need to prepare a HTML template. Later Fallwall.js uses it to build content.  
+Example:
 
 ~~~html
 <div class="template">
@@ -30,9 +31,9 @@ First, you need to prepare a HTML template. Later Fallwall.js uses it to build c
 </div>
 ~~~
 
-fallwall\_#1, fallwall\_#2... fallwall\_? will be replace with your data.
+_fallwall\_#1, fallwall\_#2... fallwall\_? will be replace with your data._
 
-Each content is wrapped in `<div class="fallwall_grid"></div>`, and they are wrapped in `<div class="outline"></div>`, all of these are in your element. You could control them with classname `outline` & `fallwall_grid`.
+Your each content will be wrapped in `<div class="fallwall_grid"></div>`, and they are wrapped in `<div class="outline"></div>`, all of these are in your element. You could control them with classname `outline` & `fallwall_grid`.
 
 ~~~html
 <div id="your-element">
