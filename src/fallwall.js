@@ -160,7 +160,7 @@
 
 	}
 
-	// get the shortest 'fw_outline' div
+	// get the shortest '.fw_outline'
 	function _getShortestCol() {
 
 		var heightArray = [];

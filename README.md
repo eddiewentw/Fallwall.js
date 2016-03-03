@@ -2,7 +2,7 @@
 
 This is a jQuery plugin to make Fall Styles like Pinterest.
 
-[Fallwall DEMO](http://github.eddiewen.me/fallwall.js/)
+[Fallwall DEMO](http://github.eddiewen.me/Fallwall.js/)
 
 ----
 
