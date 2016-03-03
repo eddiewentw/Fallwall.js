@@ -21,6 +21,51 @@ This is a jQuery plugin to make Fall Styles like Pinterest.
 
 ### How to
 
+First, you need to prepare a HTML template. Later Fallwall.js uses it to build content. Example:
+
+~~~html
+<div class="template">
+	<h4 class="fallwall_#3">fallwall_#1</h4>
+	<div class="intro">fallwall_#2</div>
+</div>
+~~~
+
+fallwall\_#1, fallwall\_#2... fallwall\_? will be replace with your data.
+
+Each content is wrapped in `<div class="fallwall_grid"></div>`, and they are wrapped in `<div class="outline"></div>`, all of these are in your element. You could control them with classname `outline` & `fallwall_grid`.
+
+~~~html
+<div id="your-element">
+	<div class="outline">
+			<div class="fallwall_grid">
+				<div class="template">
+					<h4 class="fallwall_#3">fallwall_#1</h4>
+					<div class="intro">fallwall_#2</div>
+				</div>
+			</div>
+			<div class="fallwall_grid">
+				<div class="template">
+					<h4 class="fallwall_#3">fallwall_#1</h4>
+					<div class="intro">fallwall_#2</div>
+				</div>
+			</div>
+	</div>
+	<div class="outline">
+			<div class="fallwall_grid">
+				<div class="template">
+					<h4 class="fallwall_#3">fallwall_#1</h4>
+					<div class="intro">fallwall_#2</div>
+				</div>
+			</div>
+	</div>
+</div>
+~~~
+
+### Replace `fallwall_#1`
+
+
+----
+
 插件會將你選擇的元素分割成指定數量的直欄div，如：`<div class="outline"><div>` 。
 
 當中每一則內容都會以 `<div class="fallwall_grid"></div>` 包覆
