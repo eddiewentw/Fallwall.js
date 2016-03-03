@@ -122,6 +122,9 @@
 				_createGrid( i, dataArray, 'down' );
 				currentGrid = i;
 			}
+			else {
+				break;
+			}
 		}
 
 		if( callback_func ) {
