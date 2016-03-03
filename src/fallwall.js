@@ -138,7 +138,7 @@
 
 	function createGrid( i, data, direction ) {
 
-		var shortest = getShortest();
+		var shortest = _getShortestCol();
 		var thisCode = sample_code;
 
 		for( var j = 0; j < dataNumber; j++ ) {
@@ -161,12 +161,12 @@
 	}
 
 	// get the shortest 'fw_outline' div
-	function getShortest() {
+	function _getShortestCol() {
 
 		var heightArray = [];
 
-		$.each( $('.fw_outline'), function(){
-			heightArray.push( parseInt( $(this).height() ) );
+		$.each( $('.fw_outline'), function(index, element) {
+			heightArray.push( element.offsetHeight );
 		});
 
 		var min_of_array = Math.min.apply( null, heightArray );
@@ -175,4 +175,3 @@
 	}
 
 }(jQuery));
-
