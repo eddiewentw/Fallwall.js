@@ -17,9 +17,6 @@
 		settings = $.extend({
 			gridNumber: 20,
 			columnNumber: 1,
-			margin_left: '0px',
-			margin_right: '0px',
-			color: 'black',
 			enterAnimation: 'animated zoomIn',
 		}, options);
 
@@ -29,10 +26,7 @@
 
 		this.find('.fw_column').css({
 			'float': 'left',
-			'margin-left': settings.margin_left,
-			'margin-right': settings.margin_right,
-			'color': settings.color,
-			'width': Math.floor( ( this.width() - ( parseInt(settings.margin_left) + parseInt(settings.margin_right) +0 ) *settings.columnNumber ) / settings.columnNumber )
+			'width': Math.floor( this.width() / settings.columnNumber )
 		});
 
 		setContentAtFirst( dataArray, callback_func );

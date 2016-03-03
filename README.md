@@ -99,9 +99,6 @@ In this case, you will get this output:
 
 * gridNumber ( 每次要跑出的數量 )
 * columnNumber ( 要切割為幾個直欄 )
-* margin_left ( 每個直欄的margin left )
-* margin_right ( 每個直欄的margin right )
-* color ( 其中的文字顏色 )
 * enterAnimation ( 每則內容進入的特效 )
 
 目前在 enterAnimation 預設是搭配 animate.css 使用，他能夠僅以套上 css class 的方式產生漂亮的動畫效果，如果不喜歡也可以移除它，這裡僅是替每則內容加上 class
