@@ -20,9 +20,11 @@
 			enterAnimation: 'animated zoomIn',
 		}, options);
 
+		var colElements = '';
 		for( var i = 0; i < settings.columnNumber; i++ ) {
-			this.append( '<div class=\'fw_column\'></div>' );
+			colElements += '<div class=\'fw_column\'></div>';
 		}
+		this.append( colElements );
 
 		this.find('.fw_column').css({
 			'float': 'left',
