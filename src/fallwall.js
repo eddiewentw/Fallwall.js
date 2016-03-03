@@ -152,13 +152,14 @@
 			thisCode = thisCode.replace( `fallwall_#${j+1}`, data[i][j] );
 		}
 
+		const targetCol = $('.fw_column').eq( shortest );
 		if( direction == 'down' ) {
-			$('.fw_column').eq( shortest ).append( thisCode );
-			var creatingElement = $('.fw_column').eq( shortest ).find('.fw_grid').last();
+			targetCol.append( thisCode );
+			var creatingElement = targetCol.find('.fw_grid').last();
 		}
 		else {
-			$('.fw_column').eq( shortest ).prepend( thisCode );
-			var creatingElement = $('.fw_column').eq( shortest ).find('.fw_grid').first();
+			targetCol.prepend( thisCode );
+			var creatingElement = targetCol.find('.fw_grid').first();
 		}
 
 		if( settings.enterAnimation != '' ) {
