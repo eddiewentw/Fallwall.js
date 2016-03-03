@@ -4,14 +4,13 @@
 					瀑 布 流
 	\* ---------------------------------- */
 
-	var settings, fatherBox;
+	var settings;
 	var currentGrid = 0;
 	var its_running = 0;
 
 	$.fn.fallwall_init = function( template, options, dataArray, callback_func ) {
 
-		fatherBox = this;
-
+		// Store data from user
 		settings = $.extend({
 			gridNumber: 20,
 			columnNumber: 1,
@@ -20,6 +19,7 @@
 			dataArray: dataArray,
 		}, options);
 
+		// Add columns
 		var colElements = '';
 		for( var i = 0; i < settings.columnNumber; i++ ) {
 			colElements += '<div class=\'fw_column\'></div>';
@@ -27,11 +27,13 @@
 		colElements += '<br class=\'endline\' style=\'clear: both;\' />';
 		this.append( colElements );
 
+		// Prepare CSS
 		this.find('.fw_column').css({
 			'float': 'left',
 			'width': Math.floor( this.width() / settings.columnNumber )
 		});
 
+		// Add grids in first run
 		_setContentAtFirst( dataArray, callback_func );
 
 	};
