@@ -10,7 +10,7 @@
 
 	$.fn.fallwall_init = function( framework, options, dataArray, callback_func ) {
 
-		sample_code = '<div class="fw_grid">' + framework + '</div>';
+		sample_code = `<div class='fw_grid'>${framework}</div>`;
 		dataNumber = dataArray.length;
 		fatherBox = this;
 
@@ -20,11 +20,11 @@
 			margin_left: '0px',
 			margin_right: '0px',
 			color: 'black',
-			enterAnimation: 'animated zoomIn'
+			enterAnimation: 'animated zoomIn',
 		}, options);
 
 		for( var i = 0; i < settings.columnNumber; i++ ) {
-			this.append( '<div class="fw_outline"></div>' );
+			this.append( '<div class=\'fw_outline\'></div>' );
 		}
 
 		this.find('.fw_outline').css({
@@ -72,34 +72,36 @@
 
 				}
 
-			} else {
+			}
+			else {
 				// 已經用光了 別在摳了>///<
 				plugin_status = 3;
 			}
 
-		} else {
+		}
+		else {
 			// plugin is working~~~~
 			plugin_status = 4;
 		}
 
 		switch( plugin_status ) {
 			case 1:
-					its_running = 0;
-					if( more_callback != null )
-						more_callback();
-					return "oh_no";
+				its_running = 0;
+				if( more_callback != null )
+					more_callback();
+				return "oh_no";
 				break;
 			case 2:
-					its_running = 0;
-					if( more_callback != null )
-						more_callback();
-					return "finish";
+				its_running = 0;
+				if( more_callback != null )
+					more_callback();
+				return "finish";
 				break;
 			case 3:
-					return "no_more_data";
+				return "no_more_data";
 				break;
 			case 4:
-					return "running";
+				return "running";
 				break;
 			default: 
 				break;
@@ -111,8 +113,9 @@
 
 		createGrid( 0, dataArray, 'up' );
 
-		if( callback_func != null )
+		if( callback_func != null ) {
 			callback_func();
+		}
 
 	};
 
@@ -125,10 +128,11 @@
 			}
 		}
 
-		fatherBox.append('<br class="endline" style="clear: both;" />');
+		fatherBox.append('<br class=\'endline\' style=\'clear: both;\' />');
 
-		if( callback_func != null )
+		if( callback_func != null ) {
 			callback_func();
+		}
 
 	}
 
@@ -138,19 +142,21 @@
 		var thisCode = sample_code;
 
 		for( var j = 0; j < dataNumber; j++ ) {
-			thisCode = thisCode.replace( 'fallwall_#'+(j+1), data[i][j] );
+			thisCode = thisCode.replace( `fallwall_#${j+1}`, data[i][j] );
 		}
 
 		if( direction == 'down' ) {
 			$('.fw_outline').eq( shortest ).append( thisCode );
 			var creatingElement = $('.fw_outline').eq( shortest ).find('.fw_grid').last();
-		} else {
+		}
+		else {
 			$('.fw_outline').eq( shortest ).prepend( thisCode );
 			var creatingElement = $('.fw_outline').eq( shortest ).find('.fw_grid').first();
 		}
 
-		if( settings.enterAnimation != '' )
+		if( settings.enterAnimation != '' ) {
 			creatingElement.addClass( settings.enterAnimation );
+		}
 
 	}
 
