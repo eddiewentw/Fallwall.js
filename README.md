@@ -62,43 +62,21 @@ Your each content will be wrapped in `<div class="fallwall_grid"></div>`, and th
 </div>
 ~~~
 
-### Replace `fallwall_#1`
+### Replace `fallwall_#`
 
-
-----
-
-插件會將你選擇的元素分割成指定數量的直欄div，如：`<div class="outline"><div>` 。
-
-當中每一則內容都會以 `<div class="fallwall_grid"></div>` 包覆
-
-之後可以透過這兩個 classname 再調整 css
-
-其中比較特別的一點是，會需要一組 HTML 碼作為每一則內容的模型
-
-以此為例：
-
-~~~html
-<div class="template">
-	<h4 class="fallwall_#3">fallwall_#1</h4>
-	<div class="intro">fallwall_#2</div>
-</div>
-~~~
-
-再使用如 `$('.template').html()` 的方式將其丟入插件，會以此為模型並依序將其中的 fallwall_#? 替換成之後拿到的資料
-
-若以上述為例子，接下來傳進插件內的資料請使用以下的格式：
+Please prepare your data like this array:
 
 ~~~javascript
 var fallwall_data = [
-	{ 0: "Eddie Wen",  1: "Hi~ I'm Eddie.",   2: "class_Wen" },
-	{ 0: "Jason Liu",  1: "Hi~ I'm Jason.",   2: "class_Liu" },
-	{ 0: "Steve Wang",  1: "Hi~ I'm Steve.",   2: "class_Wang" }
+	{ 0: "Eddie Wen",  1: "Hi~ I'm Eddie.", 2: "class_Wen" },
+	{ 0: "Jason Liu",  1: "Hi~ I'm Jason.", 2: "class_Liu" },
+	{ 0: "Steve Wang", 1: "Hi~ I'm Steve.", 2: "class_Wang"}
 ];
 ~~~
 
-之後會依序陣列的排列順序替換 HTML 模型中的 fallwall_#? 部分
+fallwall\_data[0][0] will replace `fallwall_#1` in template, fallwall\_data[0][1] will replace `fallwall_#2`....
 
-因此會得到三個如下的 div
+In this case, you will get this output:
 
 ~~~html
 <div class="fallwall_grid">
