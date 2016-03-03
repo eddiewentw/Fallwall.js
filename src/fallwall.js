@@ -4,13 +4,12 @@
 					瀑 布 流
 	\* ---------------------------------- */
 
-	var settings, sample_code, dataArray_stored, dataNumber, fatherBox;
+	var settings, dataArray_stored, dataNumber, fatherBox;
 	var currentGrid = 0;
 	var its_running = 0;
 
 	$.fn.fallwall_init = function( framework, options, dataArray, callback_func ) {
 
-		sample_code = `<div class='fw_grid'>${framework}</div>`;
 		dataNumber = dataArray.length;
 		fatherBox = this;
 
@@ -18,6 +17,7 @@
 			gridNumber: 20,
 			columnNumber: 1,
 			enterAnimation: 'animated zoomIn',
+			html_template: `<div class='fw_grid'>${framework}</div>`,
 		}, options);
 
 		var colElements = '';
@@ -135,7 +135,7 @@
 	function _createGrid( i, data, direction ) {
 
 		var shortest = _getShortestCol();
-		var thisCode = sample_code;
+		var thisCode = settings.html_template;
 
 		for( var j = 0; j < dataNumber; j++ ) {
 			thisCode = thisCode.replace( `fallwall_#${j+1}`, data[i][j] );
