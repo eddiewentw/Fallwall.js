@@ -145,30 +145,30 @@
 	***/
 	function _createGrid( i, data, direction ) {
 
-		var shortest = _getShortestCol();
 		var thisCode = settings.html_template;
 
 		for( var j = 0; j < Object.keys(data[0]).length; j++ ) {
 			thisCode = thisCode.replace( `fallwall_#${j+1}`, data[i][j] );
 		}
 
-		const targetCol = $('.fw_column').eq( shortest );
+		const targetColumn = $('.fw_column').eq( _getShortestCol() );
 		if( direction == 'up' ) {
-			targetCol.prepend( thisCode );
-			var creatingElement = targetCol.find('.fw_grid').first();
+			targetColumn.prepend( thisCode );
+			const creatingElement = targetColumn.find('.fw_grid').first();
 		}
 		else {
-			targetCol.append( thisCode );
-			var creatingElement = targetCol.find('.fw_grid').last();
+			targetColumn.append( thisCode );
+			const creatingElement = targetColumn.find('.fw_grid').last();
 		}
 
+		// Add animation class
 		if( settings.enterAnimation != '' ) {
 			creatingElement.addClass( settings.enterAnimation );
 		}
 
 	}
 
-	// get the shortest '.fw_column'
+	// Return the shortest '.fw_column' to append a new grid
 	function _getShortestCol() {
 
 		var heightArray = [];
@@ -177,8 +177,8 @@
 			heightArray.push( element.offsetHeight );
 		});
 
-		var min_of_array = Math.min.apply( null, heightArray );
-		return $.inArray( min_of_array, heightArray );
+		const minimumCol = Math.min.apply( null, heightArray );
+		return $.inArray( minimumCol, heightArray );
 
 	}
 
