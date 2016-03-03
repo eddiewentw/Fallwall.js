@@ -107,12 +107,13 @@
 
 	};
 
+	// Directly add a new grid at the top of any column
 	$.fn.addNewGrid = function( dataArray, callback_func ) {
 
-		// Add a new grid at the top of column
+		// Add a new grid
 		_createGrid( 0, dataArray, 'up' );
 
-		if( callback_func != null ) {
+		if( callback_func ) {
 			callback_func();
 		}
 
