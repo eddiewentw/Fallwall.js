@@ -24,6 +24,7 @@
 		for( var i = 0; i < settings.columnNumber; i++ ) {
 			colElements += '<div class=\'fw_column\'></div>';
 		}
+		colElements += '<br class=\'endline\' style=\'clear: both;\' />';
 		this.append( colElements );
 
 		this.find('.fw_column').css({
@@ -31,7 +32,7 @@
 			'width': Math.floor( this.width() / settings.columnNumber )
 		});
 
-		setContentAtFirst( dataArray, callback_func );
+		_setContentAtFirst( dataArray, callback_func );
 
 	};
 
@@ -114,18 +115,16 @@
 
 	};
 
-	function setContentAtFirst( dataArray, callback_func ) {
+	function _setContentAtFirst( dataArray, callback_func ) {
 
-		for( var i = currentGrid; i < settings.gridNumber; i++ ) {
+		for( var i = 0; i < settings.gridNumber; i++ ) {
 			if( typeof dataArray[i] != "undefined" ) {
 				_createGrid( i, dataArray, 'down' );
 				currentGrid = i;
 			}
 		}
 
-		fatherBox.append('<br class=\'endline\' style=\'clear: both;\' />');
-
-		if( callback_func != null ) {
+		if( callback_func ) {
 			callback_func();
 		}
 
