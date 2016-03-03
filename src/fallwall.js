@@ -56,7 +56,7 @@
 
 					if( typeof dataArray_stored[i] != "undefined" ) {
 
-						createGrid( i, dataArray_stored, 'down' );
+						_createGrid( i, dataArray_stored, 'down' );
 						currentGrid = i;
 
 					} else {
@@ -111,7 +111,7 @@
 
 	$.fn.addNewGrid = function( dataArray, callback_func ) {
 
-		createGrid( 0, dataArray, 'up' );
+		_createGrid( 0, dataArray, 'up' );
 
 		if( callback_func != null ) {
 			callback_func();
@@ -123,7 +123,7 @@
 
 		for( var i = currentGrid; i < settings.gridNumber; i++ ) {
 			if( typeof dataArray[i] != "undefined" ) {
-				createGrid( i, dataArray, 'down' );
+				_createGrid( i, dataArray, 'down' );
 				currentGrid = i;
 			}
 		}
@@ -136,7 +136,7 @@
 
 	}
 
-	function createGrid( i, data, direction ) {
+	function _createGrid( i, data, direction ) {
 
 		var shortest = _getShortestCol();
 		var thisCode = sample_code;
