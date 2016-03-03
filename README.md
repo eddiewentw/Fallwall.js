@@ -1,21 +1,25 @@
-## FALLWALL.js
+## Fallwall.js
+
+This is a jQuery plugin to make Fall Styles like Pinterest.
 
 [Fallwall DEMO](http://github.eddiewen.me/fallwall.js/)
 
-This is a jQuery plugin for Fall Styles like Pinterest.
+----
 
-這是一個幫助你完成瀑布流的 jQuery 插件。
-
-在開始前別忘了
+### Setup
 
 ~~~html
-    <!-- don't forget the jQuery -->
-	<script type="text/javascript" src="./lib/jquery.min.js"></script>
-	<!-- fallwall -->
-	<script type="text/javascript" src="./lib/fallwall/fallwall.js"></script>
-	<!-- you could delete it -->
-	<link rel="stylesheet" type="text/css" href="./lib/fallwall/animate.css">
+<!-- required: jQuery -->
+<script type="text/javascript" src="jquery.min.js"></script>
+<!-- required: fallwall.js or .min.js -->
+<script type="text/javascript" src="path/to/fallwall.js"></script>
+<!-- optional: animation effect -->
+<link rel="stylesheet" type="text/css" href="path/to/animate.css">
 ~~~
+
+----
+
+### How to
 
 插件會將你選擇的元素分割成指定數量的直欄div，如：`<div class="outline"><div>` 。
 
@@ -28,10 +32,10 @@ This is a jQuery plugin for Fall Styles like Pinterest.
 以此為例：
 
 ~~~html
-   <div class="template">
-        <h4 class="fallwall_#3">fallwall_#1</h4>
-        <div class="intro">fallwall_#2</div>
-   </div>
+<div class="template">
+	<h4 class="fallwall_#3">fallwall_#1</h4>
+	<div class="intro">fallwall_#2</div>
+</div>
 ~~~
 
 再使用如 `$('.template').html()` 的方式將其丟入插件，會以此為模型並依序將其中的 fallwall_#? 替換成之後拿到的資料
@@ -39,11 +43,11 @@ This is a jQuery plugin for Fall Styles like Pinterest.
 若以上述為例子，接下來傳進插件內的資料請使用以下的格式：
 
 ~~~javascript
-  var fallwall_data = [
-         { 0: "Eddie Wen",  1: "Hi~ I'm Eddie.",   2: "class_Wen" },
-         { 0: "Jason Liu",  1: "Hi~ I'm Jason.",   2: "class_Liu" },
-         { 0: "Steve Wang",  1: "Hi~ I'm Steve.",   2: "class_Wang" }
-  ];
+var fallwall_data = [
+	{ 0: "Eddie Wen",  1: "Hi~ I'm Eddie.",   2: "class_Wen" },
+	{ 0: "Jason Liu",  1: "Hi~ I'm Jason.",   2: "class_Liu" },
+	{ 0: "Steve Wang",  1: "Hi~ I'm Steve.",   2: "class_Wang" }
+];
 ~~~
 
 之後會依序陣列的排列順序替換 HTML 模型中的 fallwall_#? 部分
@@ -51,18 +55,18 @@ This is a jQuery plugin for Fall Styles like Pinterest.
 因此會得到三個如下的 div
 
 ~~~html
-   <div class="fallwall_grid">
-        <h4 class="class_Wen">Eddie Wen</h4>
-        <div class="intro">Hi~ I'm Eddie.</div>
-   </div>
-   <div class="fallwall_grid">
-        <h4 class="class_Liu">Jason Liu</h4>
-        <div class="intro">Hi~ I'm Jason.</div>
-   </div>
-   <div class="fallwall_grid">
-        <h4 class="class_Wang">Steve Wang</h4>
-        <div class="intro">Hi~ I'm Steve.</div>
-   </div>
+<div class="fallwall_grid">
+	<h4 class="class_Wen">Eddie Wen</h4>
+	<div class="intro">Hi~ I'm Eddie.</div>
+</div>
+<div class="fallwall_grid">
+	<h4 class="class_Liu">Jason Liu</h4>
+	<div class="intro">Hi~ I'm Jason.</div>
+</div>
+<div class="fallwall_grid">
+	<h4 class="class_Wang">Steve Wang</h4>
+	<div class="intro">Hi~ I'm Steve.</div>
+</div>
 ~~~
 
 ----
@@ -82,23 +86,23 @@ Animate.css :  <http://daneden.github.io/animate.css/>
 
 ----
 
-###使用函數
+### 使用函數
 
-####fallwall_init()
+#### fallwall_init()
 
 `fallwall_init( framework, options, dataArray, callback ){}`
 
 如：
 
 ~~~javascript
- $('.box').fallwall_init( $('.template').html(), {
-      gridNumber: 4,
-      columnNumber: 3,
-      margin_left: '5px',
-      margin_right: '5px'
- }, fallwall_data, function(){
-      alert("OVER!");
- });
+$('.box').fallwall_init( $('.template').html(), {
+	gridNumber: 4,
+	columnNumber: 3,
+	margin_left: '5px',
+	margin_right: '5px'
+}, fallwall_data, function(){
+	alert("OVER!");
+});
 ~~~
 
 將 `<div class='box'></div>` 分割成三個直欄，並且設定成每次僅跑出四則內容，然後設定在完成後跳出alert。
@@ -107,7 +111,7 @@ Animate.css :  <http://daneden.github.io/animate.css/>
 
 ----
 
-####giveMeMore()
+#### giveMeMore()
 
 `giveMeMore( callback ){}`
 
@@ -116,14 +120,14 @@ Animate.css :  <http://daneden.github.io/animate.css/>
 如：
 
 ~~~javascript
- $('.box').giveMeMore( function(){
-      alert("OVER!");
- });
+$('.box').giveMeMore( function(){
+	alert("OVER!");
+});
 ~~~
 
 ----
 
-####addNewGrid()
+#### addNewGrid()
 
 `addNewGrid( dataArray, callback ){}`
 
@@ -132,9 +136,9 @@ Animate.css :  <http://daneden.github.io/animate.css/>
 如：
 
 ~~~javascript
-  $('.box').addNewGrid( [
-       { 0: "Mandy Chen", 1: "Hi~ I'm Mandy.", 2: "class_new" }
-  ], function(){
-       alert("OVER!");
-  });
+$('.box').addNewGrid( [
+	{ 0: "Mandy Chen", 1: "Hi~ I'm Mandy.", 2: "class_new" }
+], function(){
+	alert("OVER!");
+});
 ~~~
