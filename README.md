@@ -31,7 +31,7 @@ Example:
 </div>
 ~~~
 
-_fallwall\_#1, fallwall\_#2... fallwall\_? will be replace with your data._
+*fallwall\_#1, fallwall\_#2... fallwall\_? will be replace with your data.*
 
 Your each content will be wrapped in `<div class="fallwall_grid"></div>`, and they are wrapped in `<div class="outline"></div>`, all of these are in your element. You could control them with classname `outline` & `fallwall_grid`.
 
