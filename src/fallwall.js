@@ -4,20 +4,20 @@
 					瀑 布 流
 	\* ---------------------------------- */
 
-	var settings, dataArray_stored, dataNumber, fatherBox;
+	var settings, fatherBox;
 	var currentGrid = 0;
 	var its_running = 0;
 
-	$.fn.fallwall_init = function( framework, options, dataArray, callback_func ) {
+	$.fn.fallwall_init = function( template, options, dataArray, callback_func ) {
 
-		dataNumber = dataArray.length;
 		fatherBox = this;
 
 		settings = $.extend({
 			gridNumber: 20,
 			columnNumber: 1,
 			enterAnimation: 'animated zoomIn',
-			html_template: `<div class='fw_grid'>${framework}</div>`,
+			html_template: `<div class='fw_grid'>${template}</div>`,
+			dataArray: dataArray,
 		}, options);
 
 		var colElements = '';
@@ -32,7 +32,6 @@
 		});
 
 		setContentAtFirst( dataArray, callback_func );
-		dataArray_stored = dataArray;
 
 	};
 
@@ -42,7 +41,7 @@
 
 		if( its_running == 0 ) {
 
-			if( currentGrid +1 < dataArray_stored.length ) {
+			if( currentGrid +1 < settings.dataArray.length ) {
 
 				its_running = 1;
 
@@ -50,9 +49,9 @@
 				var limitNum = currentGrid + settings.gridNumber;
 				for( var i = currentGrid; i < limitNum; i++ ) {
 
-					if( typeof dataArray_stored[i] != "undefined" ) {
+					if( typeof settings.dataArray[i] != "undefined" ) {
 
-						_createGrid( i, dataArray_stored, 'down' );
+						_createGrid( i, settings.dataArray, 'down' );
 						currentGrid = i;
 
 					} else {
@@ -137,7 +136,7 @@
 		var shortest = _getShortestCol();
 		var thisCode = settings.html_template;
 
-		for( var j = 0; j < dataNumber; j++ ) {
+		for( var j = 0; j < settings.dataArray.length; j++ ) {
 			thisCode = thisCode.replace( `fallwall_#${j+1}`, data[i][j] );
 		}
 
