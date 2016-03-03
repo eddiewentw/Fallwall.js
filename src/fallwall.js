@@ -10,7 +10,7 @@
 
 	$.fn.fallwall_init = function( framework, options, dataArray, callback_func ) {
 
-		sample_code = '<div class="fallwall_grid">' + framework + '</div>';
+		sample_code = '<div class="fw_grid">' + framework + '</div>';
 		dataNumber = dataArray.length;
 		fatherBox = this;
 
@@ -24,10 +24,10 @@
 		}, options);
 
 		for( var i = 0; i < settings.columnNumber; i++ ) {
-			this.append( '<div class="outline"></div>' );
+			this.append( '<div class="fw_outline"></div>' );
 		}
 
-		this.find('.outline').css({
+		this.find('.fw_outline').css({
 			'float': 'left',
 			'margin-left': settings.margin_left,
 			'margin-right': settings.margin_right,
@@ -142,11 +142,11 @@
 		}
 
 		if( direction == 'down' ) {
-			$('.outline').eq( shortest ).append( thisCode );
-			var creatingElement = $('.outline').eq( shortest ).find('.fallwall_grid').last();
+			$('.fw_outline').eq( shortest ).append( thisCode );
+			var creatingElement = $('.fw_outline').eq( shortest ).find('.fw_grid').last();
 		} else {
-			$('.outline').eq( shortest ).prepend( thisCode );
-			var creatingElement = $('.outline').eq( shortest ).find('.fallwall_grid').first();
+			$('.fw_outline').eq( shortest ).prepend( thisCode );
+			var creatingElement = $('.fw_outline').eq( shortest ).find('.fw_grid').first();
 		}
 
 		if( settings.enterAnimation != '' )
@@ -154,12 +154,12 @@
 
 	}
 
-	// get the shortest 'outline' div
+	// get the shortest 'fw_outline' div
 	function getShortest() {
 
 		var heightArray = [];
 
-		$.each( $('.outline'), function(){
+		$.each( $('.fw_outline'), function(){
 			heightArray.push( parseInt( $(this).height() ) );
 		});
 

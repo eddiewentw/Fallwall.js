@@ -33,26 +33,26 @@ Example:
 
 *fallwall\_#1, fallwall\_#2... fallwall\_? will be replace with your data.*
 
-Your each content will be wrapped in `<div class="fallwall_grid"></div>`, and they are wrapped in `<div class="outline"></div>`, all of these are in your element. You could control them with classname `outline` & `fallwall_grid`.
+Your each content will be wrapped in `<div class="fw_grid"></div>`, and they are wrapped in `<div class="fw_outline"></div>`, all of these are in your element. You could control them with classname `fw_outline` & `fw_grid`.
 
 ~~~html
 <div id="your-element">
-	<div class="outline">
-			<div class="fallwall_grid">
+	<div class="fw_outline">
+			<div class="fw_grid">
 				<div class="template">
 					<h4 class="fallwall_#3">fallwall_#1</h4>
 					<div class="intro">fallwall_#2</div>
 				</div>
 			</div>
-			<div class="fallwall_grid">
+			<div class="fw_grid">
 				<div class="template">
 					<h4 class="fallwall_#3">fallwall_#1</h4>
 					<div class="intro">fallwall_#2</div>
 				</div>
 			</div>
 	</div>
-	<div class="outline">
-			<div class="fallwall_grid">
+	<div class="fw_outline">
+			<div class="fw_grid">
 				<div class="template">
 					<h4 class="fallwall_#3">fallwall_#1</h4>
 					<div class="intro">fallwall_#2</div>
@@ -79,15 +79,15 @@ fallwall\_data[0][0] will replace `fallwall_#1` in template, fallwall\_data[0][1
 In this case, you will get this output:
 
 ~~~html
-<div class="fallwall_grid">
+<div class="fw_grid">
 	<h4 class="class_Wen">Eddie Wen</h4>
 	<div class="intro">Hi~ I'm Eddie.</div>
 </div>
-<div class="fallwall_grid">
+<div class="fw_grid">
 	<h4 class="class_Liu">Jason Liu</h4>
 	<div class="intro">Hi~ I'm Jason.</div>
 </div>
-<div class="fallwall_grid">
+<div class="fw_grid">
 	<h4 class="class_Wang">Steve Wang</h4>
 	<div class="intro">Hi~ I'm Steve.</div>
 </div>
