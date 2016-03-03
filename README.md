@@ -9,11 +9,11 @@ This is a jQuery plugin to make Fall Styles like Pinterest.
 ### Setup
 
 ~~~html
-<!-- required: jQuery -->
+<!-- REQUIRED: jQuery -->
 <script type="text/javascript" src="jquery.min.js"></script>
-<!-- required: fallwall.js or .min.js -->
+<!-- REQUIRED: fallwall.js or .min.js -->
 <script type="text/javascript" src="path/to/fallwall.js"></script>
-<!-- optional: animation effect -->
+<!-- OPTIONAL: animation effect -->
 <link rel="stylesheet" type="text/css" href="path/to/animate.css">
 ~~~
 
@@ -31,33 +31,39 @@ Example:
 </div>
 ~~~
 
-*fallwall\_#1, fallwall\_#2... fallwall\_? will be replace with your data.*
+*fallwall\_#1, fallwall\_#2... fallwall\_#n will be replace with your data.*
 
-Your each content will be wrapped in `<div class="fw_grid"></div>`, and they are wrapped in `<div class="fw_column"></div>`, all of these are in your element. You could control them with classname `fw_column` & `fw_grid`.
+Your each content will be wrapped in `<div class="fw_grid"></div>`, and they are wrapped in `<div class="fw_column"></div>`, all of these are in your element.  
+You could control them with classname `fw_column` & `fw_grid`.
 
 ~~~html
 <div id="your-element">
+	<!-- column -->
 	<div class="fw_column">
-			<div class="fw_grid">
-				<div class="template">
-					<h4 class="fallwall_#3">fallwall_#1</h4>
-					<div class="intro">fallwall_#2</div>
-				</div>
+		<!-- grid -->
+		<div class="fw_grid">
+			<div class="template">
+				<h4 class="fallwall_#3">fallwall_#1</h4>
+				<div class="intro">fallwall_#2</div>
 			</div>
-			<div class="fw_grid">
-				<div class="template">
-					<h4 class="fallwall_#3">fallwall_#1</h4>
-					<div class="intro">fallwall_#2</div>
-				</div>
+		</div>
+		<!-- grid -->
+		<div class="fw_grid">
+			<div class="template">
+				<h4 class="fallwall_#3">fallwall_#1</h4>
+				<div class="intro">fallwall_#2</div>
 			</div>
+		</div>
 	</div>
+	<!-- column -->
 	<div class="fw_column">
-			<div class="fw_grid">
-				<div class="template">
-					<h4 class="fallwall_#3">fallwall_#1</h4>
-					<div class="intro">fallwall_#2</div>
-				</div>
+		<!-- grid -->
+		<div class="fw_grid">
+			<div class="template">
+				<h4 class="fallwall_#3">fallwall_#1</h4>
+				<div class="intro">fallwall_#2</div>
 			</div>
+		</div>
 	</div>
 </div>
 ~~~
@@ -68,13 +74,13 @@ Please prepare your data like this array:
 
 ~~~javascript
 var fallwall_data = [
-	{ 0: "Eddie Wen",  1: "Hi~ I'm Eddie.", 2: "class_Wen" },
-	{ 0: "Jason Liu",  1: "Hi~ I'm Jason.", 2: "class_Liu" },
-	{ 0: "Steve Wang", 1: "Hi~ I'm Steve.", 2: "class_Wang"}
+	{ 0: "Eddie Wen",  1: "Hi~ I'm Eddie.", 2: "class_Wen"  },
+	{ 0: "Jason Liu",  1: "Hi~ I'm Jason.", 2: "class_Liu"  },
+	{ 0: "Steve Wang", 1: "Hi~ I'm Steve.", 2: "class_Wang" }
 ];
 ~~~
 
-fallwall\_data[0][0] will replace `fallwall_#1` in template, fallwall\_data[0][1] will replace `fallwall_#2`....
+fallwall\_data[n][0] will replace `fallwall_#1` in template, fallwall\_data[n][1] will replace `fallwall_#2`....
 
 In this case, you will get this output:
 
@@ -121,7 +127,7 @@ $('.box').fallwall_init( $('.template').html(), {
 	columnNumber: 3,
 	margin_left: '5px',
 	margin_right: '5px'
-}, fallwall_data, function(){
+}, fallwall_data, function() {
 	alert("OVER!");
 });
 ~~~
@@ -141,7 +147,7 @@ $('.box').fallwall_init( $('.template').html(), {
 如：
 
 ~~~javascript
-$('.box').giveMeMore( function(){
+$('.box').giveMeMore( function() {
 	alert("OVER!");
 });
 ~~~
@@ -159,7 +165,7 @@ $('.box').giveMeMore( function(){
 ~~~javascript
 $('.box').addNewGrid( [
 	{ 0: "Mandy Chen", 1: "Hi~ I'm Mandy.", 2: "class_new" }
-], function(){
+], function() {
 	alert("OVER!");
 });
 ~~~
