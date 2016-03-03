@@ -109,6 +109,7 @@
 
 	$.fn.addNewGrid = function( dataArray, callback_func ) {
 
+		// Add a new grid at the top of column
 		_createGrid( 0, dataArray, 'up' );
 
 		if( callback_func != null ) {
@@ -135,12 +136,19 @@
 
 	}
 
+	/***
+	 *
+	 * Add new grid
+	 * direction: up/down => grid is added at the top/bottom
+	 * But keep second parameter - data because of 'addNewGrid()'
+	 *
+	***/
 	function _createGrid( i, data, direction ) {
 
 		var shortest = _getShortestCol();
 		var thisCode = settings.html_template;
 
-		for( var j = 0; j < settings.dataArray.length; j++ ) {
+		for( var j = 0; j < Object.keys(data[0]).length; j++ ) {
 			thisCode = thisCode.replace( `fallwall_#${j+1}`, data[i][j] );
 		}
 
