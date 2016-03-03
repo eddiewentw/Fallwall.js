@@ -153,13 +153,13 @@
 		}
 
 		const targetCol = $('.fw_column').eq( shortest );
-		if( direction == 'down' ) {
-			targetCol.append( thisCode );
-			var creatingElement = targetCol.find('.fw_grid').last();
-		}
-		else {
+		if( direction == 'up' ) {
 			targetCol.prepend( thisCode );
 			var creatingElement = targetCol.find('.fw_grid').first();
+		}
+		else {
+			targetCol.append( thisCode );
+			var creatingElement = targetCol.find('.fw_grid').last();
 		}
 
 		if( settings.enterAnimation != '' ) {
