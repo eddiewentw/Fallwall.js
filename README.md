@@ -156,16 +156,20 @@ $('.box').giveMeMore( function() {
 
 #### addFwGrid()
 
-`addFwGrid( dataArray, callback ){}`
+`addFwGrid( data, callback ){}`
 
 這會直接插入一個新的內容，但會在瀑布流的最上方出現，這裡資料的格式就跟上面的格式一樣就行了。
+
+**Just Object, not Array**
 
 如：
 
 ~~~javascript
-$('.box').addFwGrid( [
-	{ 0: "Mandy Chen", 1: "Hi~ I'm Mandy.", 2: "class_new" }
-], function() {
+$('.box').addFwGrid({
+	0: "Mandy Chen",
+	1: "Hi~ I'm Mandy.",
+	2: "class_new"
+}, function() {
 	alert("OVER!");
 });
 ~~~
