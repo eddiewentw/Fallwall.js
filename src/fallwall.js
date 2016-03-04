@@ -6,7 +6,7 @@
 
 	var settings;
 
-	$.fn.fallwall_init = function( template, options, dataArray, callback_func ) {
+	$.fn.fallwall_init = function( template, dataArray, options, callback_func ) {
 
 		// Store data from user
 		settings = $.extend({

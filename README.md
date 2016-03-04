@@ -117,17 +117,17 @@ Animate.css :  <http://daneden.github.io/animate.css/>
 
 #### fallwall_init()
 
-`fallwall_init( framework, options, dataArray, callback ){}`
+`fallwall_init( framework, dataArray, options, callback ){}`
 
 如：
 
 ~~~javascript
-$('.box').fallwall_init( $('.template').html(), {
+$('.box').fallwall_init( $('.template').html(), fallwall_data, {
 	gridNumber: 4,
 	columnNumber: 3,
 	margin_left: '5px',
 	margin_right: '5px'
-}, fallwall_data, function() {
+}, function() {
 	alert("OVER!");
 });
 ~~~
