@@ -31,7 +31,7 @@ Example:
 </div>
 ~~~
 
-*fallwall\_#1, fallwall\_#2... fallwall\_#n will be replace with your data.*
+*fallwall\_#1, fallwall\_#2... fallwall\_#n will be replaced with your data.*
 
 Your each content will be wrapped in `<div class='fw_grid'></div>`, and they are wrapped in `<div class='fw_column'></div>`, all of these are in your element.  
 You could control them with classname `fw_column` & `fw_grid`.
@@ -68,7 +68,7 @@ You could control them with classname `fw_column` & `fw_grid`.
 </div>
 ~~~
 
-### Replace `fallwall_#`
+### Replace `fallwall_#N`
 
 Please prepare your data like this array:
 
