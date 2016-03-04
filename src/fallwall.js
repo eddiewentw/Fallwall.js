@@ -147,13 +147,14 @@
 		}
 
 		const targetColumn = $('.fw_column').eq( _getShortestCol() );
+		var creatingElement;
 		if( direction == 'up' ) {
 			targetColumn.prepend( thisCode );
-			const creatingElement = targetColumn.find('.fw_grid').first();
+			creatingElement = targetColumn.find('.fw_grid').first();
 		}
 		else {
 			targetColumn.append( thisCode );
-			const creatingElement = targetColumn.find('.fw_grid').last();
+			creatingElement = targetColumn.find('.fw_grid').last();
 		}
 
 		// Add animation class
