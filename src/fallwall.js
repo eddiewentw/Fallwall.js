@@ -108,7 +108,7 @@
 	};
 
 	// Directly add a new grid at the top of any column
-	$.fn.addNewGrid = function( dataArray, callback_func ) {
+	$.fn.addFwGrid = function( dataArray, callback_func ) {
 
 		// Add a new grid
 		_createGrid( 0, dataArray, 'up' );
@@ -141,7 +141,7 @@
 	 *
 	 * Add new grid
 	 * direction: up/down => grid is added at the top/bottom
-	 * But keep second parameter - data because of 'addNewGrid()'
+	 * But keep second parameter - data because of 'addFwGrid()'
 	 *
 	***/
 	function _createGrid( i, data, direction ) {
