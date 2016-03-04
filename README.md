@@ -50,27 +50,21 @@ You could control them with classname `fw_column` & `fw_grid`.
 	<div class='fw_column'>
 		<!-- grid -->
 		<div class='fw_grid'>
-			<div class='template'>
-				<h4 class='fallwall_#3'>fallwall_#1</h4>
-				<div class='intro'>fallwall_#2</div>
-			</div>
+			<h4 class='fallwall_#3'>fallwall_#1</h4>
+			<div class='intro'>fallwall_#2</div>
 		</div>
 		<!-- grid -->
 		<div class='fw_grid'>
-			<div class='template'>
-				<h4 class='fallwall_#3'>fallwall_#1</h4>
-				<div class='intro'>fallwall_#2</div>
-			</div>
+			<h4 class='fallwall_#3'>fallwall_#1</h4>
+			<div class='intro'>fallwall_#2</div>
 		</div>
 	</div>
 	<!-- column -->
 	<div class='fw_column'>
 		<!-- grid -->
 		<div class='fw_grid'>
-			<div class='template'>
-				<h4 class='fallwall_#3'>fallwall_#1</h4>
-				<div class='intro'>fallwall_#2</div>
-			</div>
+			<h4 class='fallwall_#3'>fallwall_#1</h4>
+			<div class='intro'>fallwall_#2</div>
 		</div>
 	</div>
 </div>
@@ -146,7 +140,7 @@ $('#element').fallwall_init( $('.template').html(), fallwall_data, {
 
 `loadMoreFw( callback ){}`
 
-This will append more data grid at the bottom. You could call this when user scroll down.
+This will append more data grid at the bottom. You might like to call this function when user scroll down.
 
 This function will return a String, `NO_MORE_DATA` or `FINISHED`. The latter means this run is finished, the former means the data is exhausted.
 
