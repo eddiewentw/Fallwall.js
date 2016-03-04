@@ -32,12 +32,12 @@
 			'width': Math.floor( this.width() / settings.columnNumber )
 		});
 
-		// Add grids in first run
+		// Add grids at first
 		_setContentAtFirst( dataArray, callback_func );
 
 	};
 
-	$.fn.loadMoreFw = function( more_callback ) {
+	$.fn.loadMoreFw = function( callback_func ) {
 
 		if( currentGrid +1 < settings.dataArray.length ) {
 
@@ -52,18 +52,17 @@
 
 				}
 				else {
-					// 這一輪跑到一半就用光了
-					if( more_callback ) {
-						more_callback();
+					// Data is exhausted before last run in loop
+					if( callback_func ) {
+						callback_func();
 					}
 					return "NO_MORE_DATA";
 				}
 
-				// This is last run in loop
+				// Last run in loop
 				if( i == limitNum-1 ) {
-					// 這一輪全部跑完 nice!
-					if( more_callback ) {
-						more_callback();
+					if( callback_func ) {
+						callback_func();
 					}
 					return "FINISHED";
 				}
@@ -72,7 +71,10 @@
 
 		}
 
-		// 已經用光了 別在摳了>///<
+		/***
+		 * There is no more data.
+		 * All is displayed.
+		***/
 		return "NO_MORE_DATA";
 
 	};
