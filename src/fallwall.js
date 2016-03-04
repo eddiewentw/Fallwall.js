@@ -47,7 +47,7 @@
 
 				if( typeof settings.dataArray[i] != "undefined" ) {
 
-					_createGrid( i, settings.dataArray, 'down' );
+					_createGrid( settings.dataArray[i], 'down' );
 					settings.currentGrid = i;
 
 				}
@@ -83,7 +83,7 @@
 	$.fn.addFwGrid = function( data, callback_func ) {
 
 		// Add a new grid
-		_createGrid( 0, [data], 'up' );
+		_createGrid( data, 'up' );
 
 		if( callback_func ) {
 			callback_func();
@@ -95,7 +95,7 @@
 
 		for( var i = 0; i < settings.gridNumber; i++ ) {
 			if( typeof dataArray[i] != "undefined" ) {
-				_createGrid( i, dataArray, 'down' );
+				_createGrid( dataArray[i], 'down' );
 				settings.currentGrid = i;
 			}
 			else {
@@ -116,12 +116,12 @@
 	 * But keep second parameter - data because of 'addFwGrid()'
 	 *
 	***/
-	function _createGrid( i, data, direction ) {
+	function _createGrid( obj, direction ) {
 
 		var thisCode = settings.html_template;
 
-		for( var j = 0; j < Object.keys(data[0]).length; j++ ) {
-			thisCode = thisCode.replace( `fallwall_#${j+1}`, data[i][j] );
+		for( var j = 0; j < Object.keys(obj).length; j++ ) {
+			thisCode = thisCode.replace( `fallwall_#${j+1}`, obj[j] );
 		}
 
 		const targetColumn = $('.fw_column').eq( _getShortestCol() );
