@@ -71,11 +71,8 @@
 			}
 
 		}
-		else {
-			// 已經用光了 別在摳了>///<
-			plugin_status = 3;
-		}
 
+		// 已經用光了 別在摳了>///<
 		return "no_more_data";
 
 	};
