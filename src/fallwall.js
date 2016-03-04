@@ -5,7 +5,6 @@
 	\* ---------------------------- */
 
 	var settings;
-	var currentGrid = 0;
 
 	$.fn.fallwall_init = function( template, options, dataArray, callback_func ) {
 
@@ -16,6 +15,7 @@
 			enterAnimation: 'animated zoomIn',
 			html_template: `<div class='fw_grid'>${template}</div>`,
 			dataArray: dataArray,
+			currentGrid: 0
 		}, options);
 
 		// Add columns
@@ -39,16 +39,16 @@
 
 	$.fn.loadMoreFw = function( callback_func ) {
 
-		if( currentGrid +1 < settings.dataArray.length ) {
+		if( settings.currentGrid +1 < settings.dataArray.length ) {
 
-			currentGrid++;
-			const limitNum = currentGrid + settings.gridNumber;
-			for( var i = currentGrid; i < limitNum; i++ ) {
+			settings.currentGrid++;
+			const limitNum = settings.currentGrid + settings.gridNumber;
+			for( var i = settings.currentGrid; i < limitNum; i++ ) {
 
 				if( typeof settings.dataArray[i] != "undefined" ) {
 
 					_createGrid( i, settings.dataArray, 'down' );
-					currentGrid = i;
+					settings.currentGrid = i;
 
 				}
 				else {
@@ -96,7 +96,7 @@
 		for( var i = 0; i < settings.gridNumber; i++ ) {
 			if( typeof dataArray[i] != "undefined" ) {
 				_createGrid( i, dataArray, 'down' );
-				currentGrid = i;
+				settings.currentGrid = i;
 			}
 			else {
 				break;
