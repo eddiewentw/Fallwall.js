@@ -59,7 +59,7 @@
 					break;
 				}
 
-				if( i+1 == limitNum ) {
+				if( i == limitNum-1 ) {
 					// 這一輪全部跑完 nice!
 					plugin_status = 2;
 				}
