@@ -103,13 +103,14 @@ In this case, you will get this output:
 
 ### Options
 
-* gridNumber ( 每次要跑出的數量 )
-* columnNumber ( 要切割為幾個直欄 )
-* defaultClass ( 每則內容進入的特效 )
+* __gridNumber__: Int  
+How many grids do you want to generate everytime
+* __columnNumber__: Int  
+Number of column in your element
+* __defaultClass__: String  
+Default class you want be add on the grid.
 
-目前在 enterAnimation 預設是搭配 animate.css 使用，他能夠僅以套上 css class 的方式產生漂亮的動畫效果，如果不喜歡也可以移除它，這裡僅是替每則內容加上 class
-
-Animate.css :  <http://daneden.github.io/animate.css/>
+My default class is `'animated zoomIn'` in the [DEMO](http://github.eddiewen.me/Fallwall.js/) page. That's [Animate.css](http://daneden.github.io/animate.css/)'s class. You could use this way to build animation.
 
 ----
 
