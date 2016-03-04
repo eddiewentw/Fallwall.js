@@ -56,7 +56,7 @@
 					if( more_callback ) {
 						more_callback();
 					}
-					return "oh_no";
+					return "NO_MORE_DATA";
 				}
 
 				// This is last run in loop
@@ -65,7 +65,7 @@
 					if( more_callback ) {
 						more_callback();
 					}
-					return "finish";
+					return "FINISHED";
 				}
 
 			}
@@ -73,7 +73,7 @@
 		}
 
 		// 已經用光了 別在摳了>///<
-		return "no_more_data";
+		return "NO_MORE_DATA";
 
 	};
 
