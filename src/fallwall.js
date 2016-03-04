@@ -73,22 +73,17 @@
 
 		switch( plugin_status ) {
 			case 1:
-				its_running = 0;
 				if( more_callback != null )
 					more_callback();
 				return "oh_no";
 				break;
 			case 2:
-				its_running = 0;
 				if( more_callback != null )
 					more_callback();
 				return "finish";
 				break;
 			case 3:
 				return "no_more_data";
-				break;
-			case 4:
-				return "running";
 				break;
 			default: 
 				break;
