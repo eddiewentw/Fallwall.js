@@ -39,8 +39,6 @@
 
 	$.fn.loadMoreFw = function( more_callback ) {
 
-		var plugin_status = 0;
-
 		if( currentGrid +1 < settings.dataArray.length ) {
 
 			currentGrid++;
@@ -55,13 +53,19 @@
 				}
 				else {
 					// 這一輪跑到一半就用光了
-					plugin_status = 1;
-					break;
+					if( more_callback ) {
+						more_callback();
+					}
+					return "oh_no";
 				}
 
+				// This is last run in loop
 				if( i == limitNum-1 ) {
 					// 這一輪全部跑完 nice!
-					plugin_status = 2;
+					if( more_callback ) {
+						more_callback();
+					}
+					return "finish";
 				}
 
 			}
@@ -72,25 +76,7 @@
 			plugin_status = 3;
 		}
 
-		switch( plugin_status ) {
-			case 1:
-				if( more_callback ) {
-					more_callback();
-				}
-				return "oh_no";
-				break;
-			case 2:
-				if( more_callback ) {
-					more_callback();
-				}
-				return "finish";
-				break;
-			case 3:
-				return "no_more_data";
-				break;
-			default: 
-				break;
-		}
+		return "no_more_data";
 
 	};
 
