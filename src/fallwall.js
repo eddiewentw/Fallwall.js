@@ -17,7 +17,7 @@
 		settings = $.extend({
 			gridNumber: 20,
 			columnNumber: 1,
-			defaultClass: 'animated zoomIn',
+			defaultClass: '',
 			html_template: `<div class='fw_grid'>${template}</div>`,
 			dataArray: dataArray,
 			currentGrid: 0
