@@ -54,7 +54,10 @@
 				else {
 					// Data is exhausted before last run in loop
 					if( callback_func ) {
-						callback_func();
+						if( typeof callback_func == 'function' )
+							callback_func();
+						else
+							console.error(`${callback_func} is not a function`);
 					}
 					return "NO_MORE_DATA";
 				}
@@ -62,7 +65,10 @@
 				// Last run in loop
 				if( i == limitNum-1 ) {
 					if( callback_func ) {
-						callback_func();
+						if( typeof callback_func == 'function' )
+							callback_func();
+						else
+							console.error(`${callback_func} is not a function`);
 					}
 					return "FINISHED";
 				}
@@ -86,7 +92,10 @@
 		_createGrid( data, 'up' );
 
 		if( callback_func ) {
-			callback_func();
+			if( typeof callback_func == 'function' )
+				callback_func();
+			else
+				console.error(`${callback_func} is not a function`);
 		}
 
 	};
@@ -104,7 +113,10 @@
 		}
 
 		if( callback_func ) {
-			callback_func();
+			if( typeof callback_func == 'function' )
+				callback_func();
+			else
+				console.error(`${callback_func} is not a function`);
 		}
 
 	}
