@@ -70,7 +70,7 @@ You could control them with classname `fw_column` & `fw_grid`.
 
 ### Replace `fallwall_#N`
 
-Please prepare your data like this array:
+Prepare your data like this array:
 
 ~~~javascript
 var fallwall_data = [
@@ -154,7 +154,8 @@ $('#element').loadMoreFw( function() {
 
 `addFwGrid( data, callback ){}`
 
-Directly append a new grid at the top, but you have to give a new data in Object, it doesn't use the old data you gave.  
+Directly append a new grid at the top.  
+But you have to give a new data in Object, it doesn't use the old data you gave.
 
 Example：
 
