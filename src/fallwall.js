@@ -23,7 +23,6 @@
 		for( var i = 0; i < settings.columnNumber; i++ ) {
 			colElements += '<div class=\'fw_column\'></div>';
 		}
-		// colElements += '<br class=\'endline\' style=\'clear: both;\' />';
 		this.append( colElements );
 
 		// Prepare CSS
