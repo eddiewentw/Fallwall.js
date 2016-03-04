@@ -18,9 +18,9 @@ npm install --save fallwall
 ### Setup
 
 ~~~html
-<!-- REQUIRED: jQuery -->
+<!-- jQuery -->
 <script type='text/javascript' src='jquery.min.js'></script>
-<!-- REQUIRED: fallwall.js or .min.js -->
+<!-- fallwall.js or .min.js -->
 <script type='text/javascript' src='path/to/fallwall.js'></script>
 ~~~
 
@@ -29,6 +29,7 @@ npm install --save fallwall
 ### How to
 
 First, you need to prepare a HTML template. Later Fallwall.js uses it to build content.  
+
 Example:
 
 ~~~html
@@ -110,11 +111,11 @@ In this case, you will get this output:
 
 ### Options
 
-* __gridNumber__: Int  
+* __gridNumber__: _Int_  
 How many grids do you want to generate everytime
-* __columnNumber__: Int  
+* __columnNumber__: _Int_  
 Number of column in your element
-* __defaultClass__: String  
+* __defaultClass__: _String_  
 Default class you want be add on the grid.
 
 My default class is `'animated zoomIn'` in the [DEMO](http://github.eddiewen.me/Fallwall.js/) page. That's [Animate.css](http://daneden.github.io/animate.css/)'s class. You could use this way to build animation.
@@ -164,7 +165,7 @@ $('#element').loadMoreFw( function() {
 `addFwGrid( data, callback ){}`
 
 Directly append a new grid at the top.  
-But you have to give a new data in Object, it doesn't use the old data you gave.
+But you have to give a new data in __Object__, it doesn't use the old data you gave.
 
 Example：
 
