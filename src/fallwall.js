@@ -8,6 +8,11 @@
 
 	$.fn.fallwall_init = function( template, dataArray, options, callback_func ) {
 
+		// Required parameters
+		if( template == null || dataArray == null ) {
+			throw new Error('You missed some parameters while initializing')
+		}
+
 		// Store data from user
 		settings = $.extend({
 			gridNumber: 20,
