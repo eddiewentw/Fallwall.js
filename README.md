@@ -22,8 +22,6 @@ npm install --save fallwall
 <script type='text/javascript' src='jquery.min.js'></script>
 <!-- REQUIRED: fallwall.js or .min.js -->
 <script type='text/javascript' src='path/to/fallwall.js'></script>
-<!-- OPTIONAL: animation effect -->
-<link rel='stylesheet' type='text/css' href='path/to/animate.css'>
 ~~~
 
 ----
