@@ -138,16 +138,16 @@ $('.box').fallwall_init( $('.template').html(), {
 
 ----
 
-#### giveMeMore()
+#### loadMoreFw()
 
-`giveMeMore( callback ){}`
+`loadMoreFw( callback ){}`
 
 大多用在使用者將畫面滑至底部時呼叫，會將先前所傳入的資料帶出更多內容來，但數量依然是原本在 init 時所設定的 gridNumber。
 
 如：
 
 ~~~javascript
-$('.box').giveMeMore( function() {
+$('.box').loadMoreFw( function() {
 	alert("OVER!");
 });
 ~~~

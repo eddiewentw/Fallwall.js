@@ -37,7 +37,7 @@
 
 	};
 
-	$.fn.giveMeMore = function( more_callback ) {
+	$.fn.loadMoreFw = function( more_callback ) {
 
 		var plugin_status = 0;
 
