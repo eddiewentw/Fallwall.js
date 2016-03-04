@@ -74,9 +74,9 @@ Please prepare your data like this array:
 
 ~~~javascript
 var fallwall_data = [
-	{ 0: 'Eddie Wen',  1: 'Hi~ I'm Eddie.', 2: 'class_Wen'  },
-	{ 0: 'Jason Liu',  1: 'Hi~ I'm Jason.', 2: 'class_Liu'  },
-	{ 0: 'Steve Wang', 1: 'Hi~ I'm Steve.', 2: 'class_Wang' }
+	{ 0: "Eddie Wen",  1: "Hi~ I'm Eddie.", 2: "class_Wen"  },
+	{ 0: "Jason Liu",  1: "Hi~ I'm Jason.", 2: "class_Liu"  },
+	{ 0: "Steve Wang", 1: "Hi~ I'm Steve.", 2: "class_Wang" }
 ];
 ~~~
 
@@ -160,9 +160,9 @@ Example：
 
 ~~~javascript
 $('#element').addFwGrid({
-	0: 'Mandy Chen',
-	1: 'Hi~ I'm Mandy.',
-	2: 'class_new'
+	0: "Mandy Chen",
+	1: "Hi~ I'm Mandy.",
+	2: "class_new"
 }, function() {
 	console.log('ADD');
 });
