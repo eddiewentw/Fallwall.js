@@ -150,8 +150,8 @@
 			heightArray.push( element.offsetHeight );
 		});
 
-		const minimumCol = Math.min.apply( null, heightArray );
-		return $.inArray( minimumCol, heightArray );
+		const minColumn = Math.min.apply( null, heightArray );
+		return $.inArray( minColumn, heightArray );
 
 	}
 
