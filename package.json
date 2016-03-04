@@ -1,0 +1,19 @@
+{
+  "name": "fallwall",
+  "version": "1.1.2",
+  "description": "Fallwall.js is a jQuery plugin to make Fall Styles like Pinterest.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EddieWen-Taiwan/Fallwall.js.git"
+  },
+  "keywords": [
+    "fall",
+    "fallwall",
+    "Pinterest"
+  ],
+  "dependencies": {
+    "jquery": ">=2.0.0"
+  },
+  "author": "Eddie Wen <m20021991y@gmail.com> (http://eddiewen.me)",
+  "homepage": "https://github.com/EddieWen-Taiwan/Fallwall.js#readme"
+}
