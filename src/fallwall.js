@@ -23,12 +23,12 @@
 		for( var i = 0; i < settings.columnNumber; i++ ) {
 			colElements += '<div class=\'fw_column\'></div>';
 		}
-		colElements += '<br class=\'endline\' style=\'clear: both;\' />';
 		this.append( colElements );
 
 		// Prepare CSS
 		this.find('.fw_column').css({
-			'float': 'left',
+			'display': 'inline-block',
+			'vertical-align': 'top',
 			'width': Math.floor( this.width() / settings.columnNumber )
 		});
 
