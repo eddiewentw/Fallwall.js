@@ -44,7 +44,7 @@
 		if( currentGrid +1 < settings.dataArray.length ) {
 
 			currentGrid++;
-			var limitNum = currentGrid + settings.gridNumber;
+			const limitNum = currentGrid + settings.gridNumber;
 			for( var i = currentGrid; i < limitNum; i++ ) {
 
 				if( typeof settings.dataArray[i] != "undefined" ) {
@@ -52,7 +52,8 @@
 					_createGrid( i, settings.dataArray, 'down' );
 					currentGrid = i;
 
-				} else {
+				}
+				else {
 					// 這一輪跑到一半就用光了
 					plugin_status = 1;
 					break;
@@ -73,13 +74,15 @@
 
 		switch( plugin_status ) {
 			case 1:
-				if( more_callback != null )
+				if( more_callback ) {
 					more_callback();
+				}
 				return "oh_no";
 				break;
 			case 2:
-				if( more_callback != null )
+				if( more_callback ) {
 					more_callback();
+				}
 				return "finish";
 				break;
 			case 3:
