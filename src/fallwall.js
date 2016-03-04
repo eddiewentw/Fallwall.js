@@ -1,12 +1,11 @@
 (function($){
 
-	/* ---------------------------------- *\
-					瀑 布 流
-	\* ---------------------------------- */
+	/* ---------------------------- *\
+				Fall Style
+	\* ---------------------------- */
 
 	var settings;
 	var currentGrid = 0;
-	var its_running = 0;
 
 	$.fn.fallwall_init = function( template, options, dataArray, callback_func ) {
 
@@ -42,44 +41,34 @@
 
 		var plugin_status = 0;
 
-		if( its_running == 0 ) {
+		if( currentGrid +1 < settings.dataArray.length ) {
 
-			if( currentGrid +1 < settings.dataArray.length ) {
+			currentGrid++;
+			var limitNum = currentGrid + settings.gridNumber;
+			for( var i = currentGrid; i < limitNum; i++ ) {
 
-				its_running = 1;
+				if( typeof settings.dataArray[i] != "undefined" ) {
 
-				currentGrid++;
-				var limitNum = currentGrid + settings.gridNumber;
-				for( var i = currentGrid; i < limitNum; i++ ) {
+					_createGrid( i, settings.dataArray, 'down' );
+					currentGrid = i;
 
-					if( typeof settings.dataArray[i] != "undefined" ) {
-
-						_createGrid( i, settings.dataArray, 'down' );
-						currentGrid = i;
-
-					} else {
-						// 這一輪跑到一半就用光了
-						plugin_status = 1;
-						break;
-					}
-
-					if( i+1 == limitNum ) {
-						// 這一輪全部跑完 nice!
-						plugin_status = 2;
-					}
-
+				} else {
+					// 這一輪跑到一半就用光了
+					plugin_status = 1;
+					break;
 				}
 
-			}
-			else {
-				// 已經用光了 別在摳了>///<
-				plugin_status = 3;
+				if( i+1 == limitNum ) {
+					// 這一輪全部跑完 nice!
+					plugin_status = 2;
+				}
+
 			}
 
 		}
 		else {
-			// plugin is working~~~~
-			plugin_status = 4;
+			// 已經用光了 別在摳了>///<
+			plugin_status = 3;
 		}
 
 		switch( plugin_status ) {
