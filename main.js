@@ -15,26 +15,26 @@ var fallwall_data = [
 		{ 0: 'Uber', 				1: 'After the launch of uberX in CA, alcohol-related crashes fell by 60 per month—that\'s 1,800 less accidents since 2012. <a href\'http://t.uber.com/madd\'>http://t.uber.com/madd</a> ', 2: '0127' }
 	];
 
-$(document).ready( function(){
+$(document).ready( function() {
 
-	$('.box').fallwall_init( $('.template').html(), {
+	$('.box').fallwall_init( $('.template').html(), fallwall_data, {
 		gridNumber: 4,
 		columnNumber: 3,
-		margin_left: '5px',
-		margin_right: '5px'
-	}, fallwall_data, function(){
-		$('body h1').css( 'background-color', '#c0c0c0' );
+		defaultClass: 'animated zoomIn'
+	}, function() {
+		console.log('Init is finished');
 	});
 
 });
 
-$(window).load( function(){
+$(window).load( function() {
 
-	$(window).scroll( function(){
+	$(window).scroll( function() {
 
 		var scrollNow = $(window).scrollTop();
-		if( scrollNow >= $('body').height() - $(window).height() +60 ) {
-			$('.box').giveMeMore();
+		if( scrollNow >= $('body').height() - $(window).height() +45 ) {
+			var status = $('.box').loadMoreFw();
+			console.log(status);
 		}
 
 	});
@@ -42,7 +42,9 @@ $(window).load( function(){
 });
 
 function more() {
-	$('.box').addNewGrid( [
-		{ 0: "Evernote", 1: "The beauty of paper. The power of Evernote. | Learn more: <a href=\'http://bit.ly/1HHycsE\'>http://bit.ly/1HHycsE</a>", 2: "0202" }
-	] );
+	$('.box').addFwGrid({
+		0: "Evernote",
+		1: "The beauty of paper. The power of Evernote. | Learn more: <a href=\'http://bit.ly/1HHycsE\'>http://bit.ly/1HHycsE</a>",
+		2: "0202"
+	});
 }
