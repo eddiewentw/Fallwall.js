@@ -101,11 +101,11 @@ In this case, you will get this output:
 
 ----
 
-參數設定，如下所列：
+### Options
 
 * gridNumber ( 每次要跑出的數量 )
 * columnNumber ( 要切割為幾個直欄 )
-* enterAnimation ( 每則內容進入的特效 )
+* defaultClass ( 每則內容進入的特效 )
 
 目前在 enterAnimation 預設是搭配 animate.css 使用，他能夠僅以套上 css class 的方式產生漂亮的動畫效果，如果不喜歡也可以移除它，這裡僅是替每則內容加上 class
 

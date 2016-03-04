@@ -17,7 +17,7 @@
 		settings = $.extend({
 			gridNumber: 20,
 			columnNumber: 1,
-			enterAnimation: 'animated zoomIn',
+			defaultClass: 'animated zoomIn',
 			html_template: `<div class='fw_grid'>${template}</div>`,
 			dataArray: dataArray,
 			currentGrid: 0
@@ -157,8 +157,8 @@
 		}
 
 		// Add animation class
-		if( settings.enterAnimation != '' ) {
-			creatingElement.addClass( settings.enterAnimation );
+		if( settings.defaultClass != '' ) {
+			creatingElement.addClass( settings.defaultClass );
 		}
 
 	}
