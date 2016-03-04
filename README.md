@@ -149,6 +149,8 @@ $('#element').fallwall_init( $('.template').html(), fallwall_data, {
 
 This will append more data grid at the bottom. You could call this when user scroll down.
 
+This function will return a String, `NO_MORE_DATA` or `FINISHED`. The latter means this run is finished, the former means the data is exhausted.
+
 Example：
 
 ~~~javascript
