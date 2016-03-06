@@ -34,7 +34,7 @@
 		this.find('.fw_column').css({
 			'display': 'inline-block',
 			'vertical-align': 'top',
-			'width': Math.floor( this.width() / settings.columnNumber )
+			'width': `${100/settings.columnNumber}%`
 		});
 
 		// Add grids at first
