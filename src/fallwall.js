@@ -13,11 +13,106 @@
 }(this, function($) {
 	'use strict';
 
+	var defaults = {
+		gridNumber: 20,
+		columnNumber: 1,
+		defaultClass: '',
+		// html_template: `<div class='fw_grid'>${template}</div>`,
+		// dataArray: dataArray,
+		currentGrid: 0
+	},
+
+	_setContentAtFirst = function( dataArray, callback_func ) {
+
+		for( var i = 0; i < settings.gridNumber; i++ ) {
+			if( typeof dataArray[i] != "undefined" ) {
+				_createGrid( dataArray[i], 'down' );
+				settings.currentGrid = i;
+			}
+			else {
+				break;
+			}
+		}
+
+		if( callback_func ) {
+			if( typeof callback_func == 'function' )
+				callback_func();
+			else
+				console.error(`${callback_func} is not a function`);
+		}
+
+	},
+
+	/**
+	 * Add new grid
+	 * direction: up/down => grid is added at the top/bottom
+	 */
+	_createGrid = function( obj, direction ) {
+
+		var thisCode = settings.html_template;
+
+		for( var j = 0; j < Object.keys(obj).length; j++ ) {
+			thisCode = thisCode.replace( `fallwall_#${j+1}`, obj[j] );
+		}
+
+		var targetColumn = $('.fw_column').eq( _getShortestCol() );
+		var creatingElement;
+		if( direction == 'up' ) {
+			targetColumn.prepend( thisCode );
+			creatingElement = targetColumn.find('.fw_grid').first();
+		}
+		else {
+			targetColumn.append( thisCode );
+			creatingElement = targetColumn.find('.fw_grid').last();
+		}
+
+		// Add animation class
+		if( settings.defaultClass != '' ) {
+			creatingElement.addClass( settings.defaultClass );
+		}
+
+	},
+
+	/**
+	 * Return the shortest fw_column to append a new grid
+	 */
+	_getShortestCol = function() {
+
+		var heightArray = [];
+
+		$.each( $('.fw_column'), function(index, element) {
+			heightArray.push( element.offsetHeight );
+		});
+
+		var minColumn = Math.min.apply( null, heightArray );
+		return $.inArray( minColumn, heightArray );
+
+	};
+
+	/**
+	 * Fallwall construtcor
+	 * Setup template and data source
+	 */
 	$.fn.fallwall_init = function( template, dataArray, options, callback_func ) {
 
-	}
+	};
+
+	/**
+	 * load more data and append them
+	 */
+	$.fn.loadMoreFw = function( callback_func ) {
+
+	};
+
+	/**
+	 * directly append a new grid at the top of one column
+	 */
+	$.fn.addFwGrid = function( data, callback_func ) {
+
+	};
 
 }));
+
 // (function($){
 
 // 	var settings;
@@ -125,73 +220,5 @@
 // 		}
 
 // 	};
-
-// 	function _setContentAtFirst( dataArray, callback_func ) {
-
-// 		for( var i = 0; i < settings.gridNumber; i++ ) {
-// 			if( typeof dataArray[i] != "undefined" ) {
-// 				_createGrid( dataArray[i], 'down' );
-// 				settings.currentGrid = i;
-// 			}
-// 			else {
-// 				break;
-// 			}
-// 		}
-
-// 		if( callback_func ) {
-// 			if( typeof callback_func == 'function' )
-// 				callback_func();
-// 			else
-// 				console.error(`${callback_func} is not a function`);
-// 		}
-
-// 	}
-
-// 	/***
-// 	 *
-// 	 * Add new grid
-// 	 * direction: up/down => grid is added at the top/bottom
-// 	 * But keep second parameter - data because of 'addFwGrid()'
-// 	 *
-// 	***/
-// 	function _createGrid( obj, direction ) {
-
-// 		var thisCode = settings.html_template;
-
-// 		for( var j = 0; j < Object.keys(obj).length; j++ ) {
-// 			thisCode = thisCode.replace( `fallwall_#${j+1}`, obj[j] );
-// 		}
-
-// 		const targetColumn = $('.fw_column').eq( _getShortestCol() );
-// 		var creatingElement;
-// 		if( direction == 'up' ) {
-// 			targetColumn.prepend( thisCode );
-// 			creatingElement = targetColumn.find('.fw_grid').first();
-// 		}
-// 		else {
-// 			targetColumn.append( thisCode );
-// 			creatingElement = targetColumn.find('.fw_grid').last();
-// 		}
-
-// 		// Add animation class
-// 		if( settings.defaultClass != '' ) {
-// 			creatingElement.addClass( settings.defaultClass );
-// 		}
-
-// 	}
-
-// 	// Return the shortest '.fw_column' to append a new grid
-// 	function _getShortestCol() {
-
-// 		var heightArray = [];
-
-// 		$.each( $('.fw_column'), function(index, element) {
-// 			heightArray.push( element.offsetHeight );
-// 		});
-
-// 		const minColumn = Math.min.apply( null, heightArray );
-// 		return $.inArray( minColumn, heightArray );
-
-// 	}
 
 // }(jQuery));
