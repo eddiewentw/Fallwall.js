@@ -1,8 +1,11 @@
-(function($){
+/*!
+ * Fallwall.js
+ *
+ * Copyright © 2015 Eddie Wen | MIT license
+ * https://github.com/EddieWen-Taiwan/Fallwall.js
+ */
 
-	/* ---------------------------- *\
-				Fall Style
-	\* ---------------------------- */
+(function($){
 
 	var settings;
 
