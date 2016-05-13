@@ -24,10 +24,10 @@
 
 	_setContentAtFirst = function( dataArray, callback_func ) {
 
-		for( var i = 0; i < settings.gridNumber; i++ ) {
+		for( var i = 0; i < defaults.gridNumber; i++ ) {
 			if( typeof dataArray[i] != "undefined" ) {
 				_createGrid( dataArray[i], 'down' );
-				settings.currentGrid = i;
+				defaults.currentGrid = i;
 			}
 			else {
 				break;
@@ -38,7 +38,7 @@
 			if( typeof callback_func == 'function' )
 				callback_func();
 			else
-				console.error(`${callback_func} is not a function`);
+				console.error(callback_func+' is not a function');
 		}
 
 	},
@@ -49,10 +49,10 @@
 	 */
 	_createGrid = function( obj, direction ) {
 
-		var thisCode = settings.html_template;
+		var thisCode = defaults.html_template;
 
 		for( var j = 0; j < Object.keys(obj).length; j++ ) {
-			thisCode = thisCode.replace( `fallwall_#${j+1}`, obj[j] );
+			thisCode = thisCode.replace( 'fallwall_#'+(j+1), obj[j] );
 		}
 
 		var targetColumn = $('.fw_column').eq( _getShortestCol() );
@@ -66,9 +66,12 @@
 			creatingElement = targetColumn.find('.fw_grid').last();
 		}
 
-		// Add animation class
-		if( settings.defaultClass != '' ) {
-			creatingElement.addClass( settings.defaultClass );
+		/**
+		 * Add extra class
+		 * like animation class
+		 */
+		if( defaults.defaultClass != '' ) {
+			creatingElement.addClass( defaults.defaultClass );
 		}
 
 	},
@@ -114,8 +117,6 @@
 }));
 
 // (function($){
-
-// 	var settings;
 
 // 	$.fn.fallwall_init = function( template, dataArray, options, callback_func ) {
 
