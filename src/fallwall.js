@@ -112,6 +112,21 @@
 	 */
 	$.fn.addFwGrid = function( data, callback_func ) {
 
+		if( typeof data == 'object' ) {
+			// Add a new grid
+			_createGrid( data, 'up' );
+
+			if( callback_func ) {
+				if( typeof callback_func == 'function' )
+					callback_func();
+				else
+					console.error(callback_func+' is not a function');
+			}
+		}
+		else {
+			throw new Error('First parameter of addFwGrid(): '+data+' must be Object');
+		}
+
 	};
 
 }));
@@ -199,26 +214,6 @@
 // 		 * All is displayed.
 // 		***/
 // 		return "NO_MORE_DATA";
-
-// 	};
-
-// 	// Directly add a new grid at the top of any column
-// 	$.fn.addFwGrid = function( data, callback_func ) {
-
-// 		if( typeof data == 'object' ) {
-// 			// Add a new grid
-// 			_createGrid( data, 'up' );
-
-// 			if( callback_func ) {
-// 				if( typeof callback_func == 'function' )
-// 					callback_func();
-// 				else
-// 					console.error(`${callback_func} is not a function`);
-// 			}
-// 		}
-// 		else {
-// 			throw new Error(`First parameter of addFwGrid(): ${data} must be Object`);
-// 		}
 
 // 	};
 
