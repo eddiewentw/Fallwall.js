@@ -17,8 +17,8 @@
 		gridNumber: 20,
 		columnNumber: 1,
 		defaultClass: '',
-		// html_template: `<div class='fw_grid'>${template}</div>`,
-		// dataArray: dataArray,
+		html_template: '',
+		dataArray: null,
 		currentGrid: 0
 	},
 
@@ -98,6 +98,40 @@
 	 */
 	$.fn.fallwall_init = function( template, dataArray, options, callback_func ) {
 
+		/**
+		 * check required parameters
+		 */
+		if( template == null || dataArray == null ) {
+			throw new Error('You missed some parameters while initializing');
+		}
+
+		// Store data from user
+		defaults = $.extend({
+			gridNumber: 20,
+			columnNumber: 1,
+			defaultClass: '',
+			html_template: '<div class=\'fw_grid\'>'+template+'</div>',
+			dataArray: dataArray,
+			currentGrid: 0
+		}, options);
+
+		// Add columns
+		var colElements = '';
+		for( var i = 0; i < defaults.columnNumber; i++ ) {
+			colElements += '<div class=\'fw_column\'></div>';
+		}
+		this.append( colElements );
+
+		// Prepare CSS
+		this.find('.fw_column').css({
+			'display': 'inline-block',
+			'vertical-align': 'top',
+			'width': (100/defaults.columnNumber)+'%'
+		});
+
+		// Add grids at first
+		_setContentAtFirst( dataArray, callback_func );
+
 	};
 
 	/**
@@ -174,43 +208,3 @@
 	};
 
 }));
-
-// (function($){
-
-// 	$.fn.fallwall_init = function( template, dataArray, options, callback_func ) {
-
-// 		// Required parameters
-// 		if( template == null || dataArray == null ) {
-// 			throw new Error('You missed some parameters while initializing')
-// 		}
-
-// 		// Store data from user
-// 		settings = $.extend({
-// 			gridNumber: 20,
-// 			columnNumber: 1,
-// 			defaultClass: '',
-// 			html_template: `<div class='fw_grid'>${template}</div>`,
-// 			dataArray: dataArray,
-// 			currentGrid: 0
-// 		}, options);
-
-// 		// Add columns
-// 		var colElements = '';
-// 		for( var i = 0; i < settings.columnNumber; i++ ) {
-// 			colElements += '<div class=\'fw_column\'></div>';
-// 		}
-// 		this.append( colElements );
-
-// 		// Prepare CSS
-// 		this.find('.fw_column').css({
-// 			'display': 'inline-block',
-// 			'vertical-align': 'top',
-// 			'width': `${100/settings.columnNumber}%`
-// 		});
-
-// 		// Add grids at first
-// 		_setContentAtFirst( dataArray, callback_func );
-
-// 	};
-
-// }(jQuery));
