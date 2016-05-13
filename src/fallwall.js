@@ -7,11 +7,15 @@
 
 (function(root, factory) {
 	'use strict';
-	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-	typeof define === 'function' && define.amd ? define(factory) :
-	root.Fallwall = factory()
-}(this, function() {
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery')) :
+	typeof define === 'function' && define.amd ? define(['jquery'], factory) :
+	root.Fallwall = factory(jQuery)
+}(this, function($) {
 	'use strict';
+
+	$.fn.fallwall_init = function( template, dataArray, options, callback_func ) {
+
+	}
 
 }));
 // (function($){
