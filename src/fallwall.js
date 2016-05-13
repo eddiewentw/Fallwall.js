@@ -105,6 +105,50 @@
 	 */
 	$.fn.loadMoreFw = function( callback_func ) {
 
+		if( defaults.currentGrid +1 < defaults.dataArray.length ) {
+
+			defaults.currentGrid++;
+			var limitNum = defaults.currentGrid + defaults.gridNumber;
+			for( var i = defaults.currentGrid; i < limitNum; i++ ) {
+
+				if( typeof defaults.dataArray[i] != "undefined" ) {
+
+					_createGrid( defaults.dataArray[i], 'down' );
+					defaults.currentGrid = i;
+
+				}
+				else {
+					// Data is exhausted before last run in loop
+					if( callback_func ) {
+						if( typeof callback_func == 'function' )
+							callback_func();
+						else
+							console.error(callback_func+' is not a function');
+					}
+					return "NO_MORE_DATA";
+				}
+
+				// Last run in loop
+				if( i == limitNum-1 ) {
+					if( callback_func ) {
+						if( typeof callback_func == 'function' )
+							callback_func();
+						else
+							console.error(callback_func+' is not a function');
+					}
+					return "FINISHED";
+				}
+
+			}
+
+		}
+
+		/***
+		 * There is no more data.
+		 * All is displayed.
+		***/
+		return "NO_MORE_DATA";
+
 	};
 
 	/**
@@ -166,54 +210,6 @@
 
 // 		// Add grids at first
 // 		_setContentAtFirst( dataArray, callback_func );
-
-// 	};
-
-// 	$.fn.loadMoreFw = function( callback_func ) {
-
-// 		if( settings.currentGrid +1 < settings.dataArray.length ) {
-
-// 			settings.currentGrid++;
-// 			const limitNum = settings.currentGrid + settings.gridNumber;
-// 			for( var i = settings.currentGrid; i < limitNum; i++ ) {
-
-// 				if( typeof settings.dataArray[i] != "undefined" ) {
-
-// 					_createGrid( settings.dataArray[i], 'down' );
-// 					settings.currentGrid = i;
-
-// 				}
-// 				else {
-// 					// Data is exhausted before last run in loop
-// 					if( callback_func ) {
-// 						if( typeof callback_func == 'function' )
-// 							callback_func();
-// 						else
-// 							console.error(`${callback_func} is not a function`);
-// 					}
-// 					return "NO_MORE_DATA";
-// 				}
-
-// 				// Last run in loop
-// 				if( i == limitNum-1 ) {
-// 					if( callback_func ) {
-// 						if( typeof callback_func == 'function' )
-// 							callback_func();
-// 						else
-// 							console.error(`${callback_func} is not a function`);
-// 					}
-// 					return "FINISHED";
-// 				}
-
-// 			}
-
-// 		}
-
-// 		/***
-// 		 * There is no more data.
-// 		 * All is displayed.
-// 		***/
-// 		return "NO_MORE_DATA";
 
 // 	};
 
