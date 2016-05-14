@@ -22,11 +22,15 @@
 		currentGrid: 0
 	},
 
-	_setContentAtFirst = function( dataArray, callback_func ) {
+	/**
+	 * call after initializing Fallwall
+	 * append grids in the zfirst round
+	 */
+	_setFirstRoundContent = function( dataArray, callback_func ) {
 
 		for( var i = 0; i < defaults.gridNumber; i++ ) {
 			if( typeof dataArray[i] != "undefined" ) {
-				_createGrid( dataArray[i], 'down' );
+				_appendGrids( dataArray[i], 'down' );
 				defaults.currentGrid = i;
 			}
 			else {
@@ -47,7 +51,7 @@
 	 * Add new grid
 	 * direction: up/down => grid is added at the top/bottom
 	 */
-	_createGrid = function( obj, direction ) {
+	_appendGrids = function( obj, direction ) {
 
 		var thisCode = defaults.html_template;
 
@@ -55,7 +59,7 @@
 			thisCode = thisCode.replace( 'fallwall_#'+(j+1), obj[j] );
 		}
 
-		var targetColumn = $('.fw_column').eq( _getShortestCol() );
+		var targetColumn = $('.fw_column').eq( _getShortestColumn() );
 		var creatingElement;
 		if( direction == 'up' ) {
 			targetColumn.prepend( thisCode );
@@ -79,7 +83,7 @@
 	/**
 	 * Return the shortest fw_column to append a new grid
 	 */
-	_getShortestCol = function() {
+	_getShortestColumn = function() {
 
 		var heightArray = [];
 
@@ -130,7 +134,7 @@
 		});
 
 		// Add grids at first
-		_setContentAtFirst( dataArray, callback_func );
+		_setFirstRoundContent( dataArray, callback_func );
 
 	};
 
@@ -147,7 +151,7 @@
 
 				if( typeof defaults.dataArray[i] != "undefined" ) {
 
-					_createGrid( defaults.dataArray[i], 'down' );
+					_appendGrids( defaults.dataArray[i], 'down' );
 					defaults.currentGrid = i;
 
 				}
@@ -192,7 +196,7 @@
 
 		if( typeof data == 'object' ) {
 			// Add a new grid
-			_createGrid( data, 'up' );
+			_appendGrids( data, 'up' );
 
 			if( callback_func ) {
 				if( typeof callback_func == 'function' )
