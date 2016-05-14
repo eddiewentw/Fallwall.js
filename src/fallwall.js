@@ -13,14 +13,7 @@
 }(this, function($) {
 	'use strict';
 
-	var defaults = {
-		gridNumber: 20,
-		columnNumber: 1,
-		defaultClass: '',
-		html_template: '',
-		dataArray: null,
-		currentGrid: 0
-	},
+	var defaults = {},
 
 	/**
 	 * call after initializing Fallwall
