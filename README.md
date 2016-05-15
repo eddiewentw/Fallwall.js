@@ -24,6 +24,13 @@ npm install --save fallwall
 <script type='text/javascript' src='path/to/fallwall.js'></script>
 ~~~
 
+or
+
+~~~javascript
+// import in your .js file
+import 'fallwall';
+~~~
+
 ----
 
 ### How to
