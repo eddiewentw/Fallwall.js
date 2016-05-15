@@ -1,31 +1,120 @@
-(function($){
+/*!
+ * Fallwall.js
+ *
+ * Copyright © 2015 Eddie Wen | MIT license
+ * https://github.com/EddieWen-Taiwan/Fallwall.js
+ */
 
-	/* ---------------------------- *\
-				Fall Style
-	\* ---------------------------- */
+(function(root, factory) {
+	'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery')) :
+	typeof define === 'function' && define.amd ? define(['jquery'], factory) :
+	root.Fallwall = factory(jQuery)
+}(this, function($) {
+	'use strict';
 
-	var settings;
+	var defaults = {},
 
+	/**
+	 * call after initializing Fallwall
+	 * append grids in the zfirst round
+	 */
+	_setFirstRoundContent = function( dataArray, callback_func ) {
+
+		for( var i = 0; i < defaults.gridNumber; i++ ) {
+			if( typeof dataArray[i] != "undefined" ) {
+				_appendGrids( dataArray[i], 'down' );
+				defaults.currentGrid = i;
+			}
+			else {
+				break;
+			}
+		}
+
+		if( callback_func ) {
+			if( typeof callback_func == 'function' )
+				callback_func();
+			else
+				console.error(callback_func+' is not a function');
+		}
+
+	},
+
+	/**
+	 * Add new grid
+	 * direction: up/down => grid is added at the top/bottom
+	 */
+	_appendGrids = function( obj, direction ) {
+
+		var thisCode = defaults.html_template;
+
+		for( var j = 0; j < Object.keys(obj).length; j++ ) {
+			thisCode = thisCode.replace( 'fallwall_#'+(j+1), obj[j] );
+		}
+
+		var targetColumn = $('.fw_column').eq( _getShortestColumn() );
+		var creatingElement;
+		if( direction == 'up' ) {
+			targetColumn.prepend( thisCode );
+			creatingElement = targetColumn.find('.fw_grid').first();
+		}
+		else {
+			targetColumn.append( thisCode );
+			creatingElement = targetColumn.find('.fw_grid').last();
+		}
+
+		/**
+		 * Add extra class
+		 * like animation class
+		 */
+		if( defaults.defaultClass != '' ) {
+			creatingElement.addClass( defaults.defaultClass );
+		}
+
+	},
+
+	/**
+	 * Return the shortest fw_column to append a new grid
+	 */
+	_getShortestColumn = function() {
+
+		var heightArray = [];
+
+		$.each( $('.fw_column'), function(index, element) {
+			heightArray.push( element.offsetHeight );
+		});
+
+		var minColumn = Math.min.apply( null, heightArray );
+		return $.inArray( minColumn, heightArray );
+
+	};
+
+	/**
+	 * Fallwall construtcor
+	 * Setup template and data source
+	 */
 	$.fn.fallwall_init = function( template, dataArray, options, callback_func ) {
 
-		// Required parameters
+		/**
+		 * check required parameters
+		 */
 		if( template == null || dataArray == null ) {
-			throw new Error('You missed some parameters while initializing')
+			throw new Error('You missed some parameters while initializing');
 		}
 
 		// Store data from user
-		settings = $.extend({
+		defaults = $.extend({
 			gridNumber: 20,
 			columnNumber: 1,
 			defaultClass: '',
-			html_template: `<div class='fw_grid'>${template}</div>`,
+			html_template: '<div class=\'fw_grid\'>'+template+'</div>',
 			dataArray: dataArray,
 			currentGrid: 0
 		}, options);
 
 		// Add columns
 		var colElements = '';
-		for( var i = 0; i < settings.columnNumber; i++ ) {
+		for( var i = 0; i < defaults.columnNumber; i++ ) {
 			colElements += '<div class=\'fw_column\'></div>';
 		}
 		this.append( colElements );
@@ -34,26 +123,29 @@
 		this.find('.fw_column').css({
 			'display': 'inline-block',
 			'vertical-align': 'top',
-			'width': `${100/settings.columnNumber}%`
+			'width': (100/defaults.columnNumber)+'%'
 		});
 
 		// Add grids at first
-		_setContentAtFirst( dataArray, callback_func );
+		_setFirstRoundContent( dataArray, callback_func );
 
 	};
 
+	/**
+	 * load more data and append them
+	 */
 	$.fn.loadMoreFw = function( callback_func ) {
 
-		if( settings.currentGrid +1 < settings.dataArray.length ) {
+		if( defaults.currentGrid +1 < defaults.dataArray.length ) {
 
-			settings.currentGrid++;
-			const limitNum = settings.currentGrid + settings.gridNumber;
-			for( var i = settings.currentGrid; i < limitNum; i++ ) {
+			defaults.currentGrid++;
+			var limitNum = defaults.currentGrid + defaults.gridNumber;
+			for( var i = defaults.currentGrid; i < limitNum; i++ ) {
 
-				if( typeof settings.dataArray[i] != "undefined" ) {
+				if( typeof defaults.dataArray[i] != "undefined" ) {
 
-					_createGrid( settings.dataArray[i], 'down' );
-					settings.currentGrid = i;
+					_appendGrids( defaults.dataArray[i], 'down' );
+					defaults.currentGrid = i;
 
 				}
 				else {
@@ -62,7 +154,7 @@
 						if( typeof callback_func == 'function' )
 							callback_func();
 						else
-							console.error(`${callback_func} is not a function`);
+							console.error(callback_func+' is not a function');
 					}
 					return "NO_MORE_DATA";
 				}
@@ -73,7 +165,7 @@
 						if( typeof callback_func == 'function' )
 							callback_func();
 						else
-							console.error(`${callback_func} is not a function`);
+							console.error(callback_func+' is not a function');
 					}
 					return "FINISHED";
 				}
@@ -90,92 +182,26 @@
 
 	};
 
-	// Directly add a new grid at the top of any column
+	/**
+	 * directly append a new grid at the top of one column
+	 */
 	$.fn.addFwGrid = function( data, callback_func ) {
 
 		if( typeof data == 'object' ) {
 			// Add a new grid
-			_createGrid( data, 'up' );
+			_appendGrids( data, 'up' );
 
 			if( callback_func ) {
 				if( typeof callback_func == 'function' )
 					callback_func();
 				else
-					console.error(`${callback_func} is not a function`);
+					console.error(callback_func+' is not a function');
 			}
 		}
 		else {
-			throw new Error(`First parameter of addFwGrid(): ${data} must be Object`);
+			throw new Error('First parameter of addFwGrid(): '+data+' must be Object');
 		}
 
 	};
 
-	function _setContentAtFirst( dataArray, callback_func ) {
-
-		for( var i = 0; i < settings.gridNumber; i++ ) {
-			if( typeof dataArray[i] != "undefined" ) {
-				_createGrid( dataArray[i], 'down' );
-				settings.currentGrid = i;
-			}
-			else {
-				break;
-			}
-		}
-
-		if( callback_func ) {
-			if( typeof callback_func == 'function' )
-				callback_func();
-			else
-				console.error(`${callback_func} is not a function`);
-		}
-
-	}
-
-	/***
-	 *
-	 * Add new grid
-	 * direction: up/down => grid is added at the top/bottom
-	 * But keep second parameter - data because of 'addFwGrid()'
-	 *
-	***/
-	function _createGrid( obj, direction ) {
-
-		var thisCode = settings.html_template;
-
-		for( var j = 0; j < Object.keys(obj).length; j++ ) {
-			thisCode = thisCode.replace( `fallwall_#${j+1}`, obj[j] );
-		}
-
-		const targetColumn = $('.fw_column').eq( _getShortestCol() );
-		var creatingElement;
-		if( direction == 'up' ) {
-			targetColumn.prepend( thisCode );
-			creatingElement = targetColumn.find('.fw_grid').first();
-		}
-		else {
-			targetColumn.append( thisCode );
-			creatingElement = targetColumn.find('.fw_grid').last();
-		}
-
-		// Add animation class
-		if( settings.defaultClass != '' ) {
-			creatingElement.addClass( settings.defaultClass );
-		}
-
-	}
-
-	// Return the shortest '.fw_column' to append a new grid
-	function _getShortestCol() {
-
-		var heightArray = [];
-
-		$.each( $('.fw_column'), function(index, element) {
-			heightArray.push( element.offsetHeight );
-		});
-
-		const minColumn = Math.min.apply( null, heightArray );
-		return $.inArray( minColumn, heightArray );
-
-	}
-
-}(jQuery));
+}));
