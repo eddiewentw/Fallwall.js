@@ -1,3 +1,6 @@
+import 'fallwall';
+import $ from 'jquery';
+
 var fallwall_data = [
 		{ 0: 'Airbnb', 				1: '#Carnival is coming. And we know some perfect places to revel in #Rio: <a href=\'http://abnb.co/7n9PtB\'>http://abnb.co/7n9PtB</a> .', 2: '0204' },
 		{ 0: 'GitHub', 				1: 'Outfit the mini-coder in your life with new one-pieces and kids tees in the GitHub Shop <a href=\'http://github.myshopify.com/\'>http://github.myshopify.com/</a> ', 2: '0129' },
@@ -25,6 +28,14 @@ $(document).ready( function() {
 		console.log('Init is finished');
 	});
 
+	$('.btn').on( 'click', function() {
+		$(this).addFwGrid({
+			0: "Evernote",
+			1: "The beauty of paper. The power of Evernote. | Learn more: <a href=\'http://bit.ly/1HHycsE\'>http://bit.ly/1HHycsE</a>",
+			2: "0202"
+		});
+	});
+
 });
 
 $(window).load( function() {
@@ -40,11 +51,3 @@ $(window).load( function() {
 	});
 
 });
-
-function more() {
-	$('.box').addFwGrid({
-		0: "Evernote",
-		1: "The beauty of paper. The power of Evernote. | Learn more: <a href=\'http://bit.ly/1HHycsE\'>http://bit.ly/1HHycsE</a>",
-		2: "0202"
-	});
-}
