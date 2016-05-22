@@ -19,9 +19,9 @@ npm install --save fallwall
 
 ~~~html
 <!-- jQuery -->
-<script type='text/javascript' src='jquery.min.js'></script>
+<script src='jquery.min.js'></script>
 <!-- fallwall.js or .min.js -->
-<script type='text/javascript' src='path/to/fallwall.js'></script>
+<script src='path/to/fallwall.js'></script>
 ~~~
 
 or
