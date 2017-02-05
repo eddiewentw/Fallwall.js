@@ -195,21 +195,22 @@
 	/**
 	 * directly append a new grid at the top of one column
 	 */
-	$.fn.addFwGrid = function( data, callback_func ) {
+	$.fn.addFwGrid = ( data, callbackFunction ) => {
 
-		if( typeof data == 'object' ) {
-			// Add a new grid
-			_appendGrids( data, 'up' );
-
-			if( callback_func ) {
-				if( typeof callback_func == 'function' )
-					callback_func();
-				else
-					console.error(callback_func+' is not a function');
-			}
+		if( typeof data !== 'object' ) {
+			throw new Error(`First parameter of addFwGrid(): ${data} must be Object`);
 		}
-		else {
-			throw new Error('First parameter of addFwGrid(): '+data+' must be Object');
+
+		// Add a new grid
+		_appendGrids( data, 'up' );
+
+		if( callbackFunction ) {
+			if( typeof callbackFunction === 'function' ) {
+				callbackFunction();
+			}
+			else {
+				console.error(`${callbackFunction} is not a function`);
+			}
 		}
 
 	};
