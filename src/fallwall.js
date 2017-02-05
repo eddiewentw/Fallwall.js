@@ -99,7 +99,7 @@
 			heightArray.push( element.offsetHeight );
 		});
 
-		return $.inArray( Math.min.apply( null, heightArray ), heightArray );
+		return heightArray.indexOf( Math.min(...heightArray) );
 
 	};
 
