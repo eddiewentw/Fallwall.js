@@ -17,6 +17,7 @@
 		columnNumber: 1,
 		defaultClass: '',
 		currentGrid: 0,
+		dataArray: [],
 	};
 
 	/**
@@ -144,51 +145,65 @@
 	/**
 	 * load more data and append them
 	 */
-	$.fn.loadMoreFw = function( callback_func ) {
+	$.fn.loadMoreFw = ( callbackFunction ) => {
 
-		if( defaults.currentGrid +1 < defaults.dataArray.length ) {
+		/**
+		 * fallwall initialization is not yet completed
+		 */
+		if( defaults.dataArray.length === 0 ) {
+			return;
+		}
+
+		if( defaults.currentGrid + 1 < defaults.dataArray.length ) {
 
 			defaults.currentGrid++;
-			var limitNum = defaults.currentGrid + defaults.gridNumber;
-			for( var i = defaults.currentGrid; i < limitNum; i++ ) {
+			const limitNum = defaults.currentGrid + defaults.gridNumber;
+			for( let i = defaults.currentGrid; i < limitNum; i++ ) {
 
-				if( typeof defaults.dataArray[i] != "undefined" ) {
+				if( defaults.dataArray[i] ) {
 
 					_appendGrids( defaults.dataArray[i], 'down' );
 					defaults.currentGrid = i;
 
 				}
 				else {
-					// Data is exhausted before last run in loop
-					if( callback_func ) {
-						if( typeof callback_func == 'function' )
-							callback_func();
-						else
-							console.error(callback_func+' is not a function');
+					/**
+					 * Data is exhausted before last run in loop
+					 */
+					if( callbackFunction ) {
+						if( typeof callbackFunction === 'function' ) {
+							callbackFunction();
+						}
+						else {
+							console.error(`${callbackFunction} is not a function`);
+						}
 					}
-					return "NO_MORE_DATA";
+					return 'NO_MORE_DATA';
 				}
 
-				// Last run in loop
-				if( i == limitNum-1 ) {
-					if( callback_func ) {
-						if( typeof callback_func == 'function' )
-							callback_func();
-						else
-							console.error(callback_func+' is not a function');
+				/**
+				 * it is the last run of this loop
+				 */
+				if( i === limitNum - 1 ) {
+					if( callbackFunction ) {
+						if( typeof callbackFunction === 'function' ) {
+							callbackFunction();
+						}
+						else {
+							console.error(`${callbackFunction} is not a function`);
+						}
 					}
-					return "FINISHED";
+					return 'FINISHED';
 				}
 
 			}
 
 		}
 
-		/***
+		/**
 		 * There is no more data.
-		 * All is displayed.
-		***/
-		return "NO_MORE_DATA";
+		 */
+		return 'NO_MORE_DATA';
 
 	};
 
