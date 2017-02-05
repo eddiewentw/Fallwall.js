@@ -23,10 +23,10 @@
 	 * call after initializing Fallwall
 	 * append grids in the zfirst round
 	 */
-	const _setFirstRoundContent = function( dataArray, callback_func ) {
+	const _setFirstRoundContent = ( dataArray, callbackFunction ) => {
 
-		for( var i = 0; i < defaults.gridNumber; i++ ) {
-			if( typeof dataArray[i] != "undefined" ) {
+		for( let i = 0; i < defaults.gridNumber; i++ ) {
+			if( dataArray[i] ) {
 				_appendGrids( dataArray[i], 'down' );
 				defaults.currentGrid = i;
 			}
@@ -35,30 +35,32 @@
 			}
 		}
 
-		if( callback_func ) {
-			if( typeof callback_func == 'function' )
-				callback_func();
-			else
-				console.error(callback_func+' is not a function');
+		if( callbackFunction ) {
+			if( typeof callbackFunction === 'function' ) {
+				callbackFunction();
+			}
+			else {
+				console.error(`${callbackFunction} is not a function`);
+			}
 		}
 
-	},
+	};
 
 	/**
 	 * Add new grid
 	 * direction: up/down => grid is added at the top/bottom
 	 */
-	_appendGrids = function( obj, direction ) {
+	const _appendGrids = ( obj, direction ) => {
 
-		var thisCode = defaults.html_template;
+		let thisCode = defaults.html_template;
 
-		for( var j = 0; j < Object.keys(obj).length; j++ ) {
-			thisCode = thisCode.replace( 'fallwall_#'+(j+1), obj[j] );
+		for( let j = 0; j < Object.keys(obj).length; j++ ) {
+			thisCode = thisCode.replace( `fallwall_#${j+1}`, obj[j] );
 		}
 
-		var targetColumn = $('.fw_column').eq( _getShortestColumn() );
-		var creatingElement;
-		if( direction == 'up' ) {
+		const targetColumn = $('.fw_column').eq( _getShortestColumn() );
+		let creatingElement;
+		if( direction === 'up' ) {
 			targetColumn.prepend( thisCode );
 			creatingElement = targetColumn.find('.fw_grid').first();
 		}
@@ -71,25 +73,24 @@
 		 * Add extra class
 		 * like animation class
 		 */
-		if( defaults.defaultClass != '' ) {
+		if( defaults.defaultClass ) {
 			creatingElement.addClass( defaults.defaultClass );
 		}
 
-	},
+	};
 
 	/**
 	 * Return the shortest fw_column to append a new grid
 	 */
-	_getShortestColumn = function() {
+	const _getShortestColumn = () => {
 
-		var heightArray = [];
+		let heightArray = [];
 
-		$.each( $('.fw_column'), function(index, element) {
+		$.each($('.fw_column'), (index, element) => {
 			heightArray.push( element.offsetHeight );
 		});
 
-		var minColumn = Math.min.apply( null, heightArray );
-		return $.inArray( minColumn, heightArray );
+		return $.inArray( Math.min.apply( null, heightArray ), heightArray );
 
 	};
 
