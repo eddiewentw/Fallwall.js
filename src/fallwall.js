@@ -5,21 +5,25 @@
  * https://github.com/EddieWen-Taiwan/Fallwall.js
  */
 
-(function(root, factory) {
-	'use strict';
+((root, factory) => {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery')) :
 	typeof define === 'function' && define.amd ? define(['jquery'], factory) :
-	root.Fallwall = factory(jQuery)
-}(this, function($) {
-	'use strict';
+	root ? root.Fallwall = factory(jQuery) :
+	window.Fallwall =  factory(jQuery)
+})(this, ($) => {
 
-	var defaults = {},
+	let defaults = {
+		gridNumber: 20,
+		columnNumber: 1,
+		defaultClass: '',
+		currentGrid: 0,
+	};
 
 	/**
 	 * call after initializing Fallwall
 	 * append grids in the zfirst round
 	 */
-	_setFirstRoundContent = function( dataArray, callback_func ) {
+	const _setFirstRoundContent = function( dataArray, callback_func ) {
 
 		for( var i = 0; i < defaults.gridNumber; i++ ) {
 			if( typeof dataArray[i] != "undefined" ) {
@@ -93,41 +97,46 @@
 	 * Fallwall construtcor
 	 * Setup template and data source
 	 */
-	$.fn.fallwall_init = function( template, dataArray, options, callback_func ) {
+	$.fn.fallwall_init = ( template, dataArray, options, callbackFunction ) => {
 
 		/**
 		 * check required parameters
 		 */
-		if( template == null || dataArray == null ) {
-			throw new Error('You missed some parameters while initializing');
+		if( !template ) {
+			throw new Error('missed HTML template');
+		}
+
+		if( !dataArray ) {
+			throw new Error('missed data source');
+		}
+		if( !Array.isArray(dataArray) ) {
+			throw new Error('typeof dataArray is not correct');
 		}
 
 		// Store data from user
-		defaults = $.extend({
-			gridNumber: 20,
-			columnNumber: 1,
-			defaultClass: '',
-			html_template: '<div class=\'fw_grid\'>'+template+'</div>',
+		defaults = {
+			...defaults,
+			html_template: `<div class='fw_grid'>${template}</div>`,
 			dataArray: dataArray,
-			currentGrid: 0
-		}, options);
+			...options,
+		};
 
 		// Add columns
-		var colElements = '';
-		for( var i = 0; i < defaults.columnNumber; i++ ) {
+		let colElements = '';
+		for( let i = 0; i < defaults.columnNumber; i++ ) {
 			colElements += '<div class=\'fw_column\'></div>';
 		}
 		this.append( colElements );
 
 		// Prepare CSS
 		this.find('.fw_column').css({
-			'display': 'inline-block',
 			'vertical-align': 'top',
-			'width': (100/defaults.columnNumber)+'%'
+			display: 'inline-block',
+			width: `${Math.floor(1000/defaults.columnNumber)/10}%`,
 		});
 
 		// Add grids at first
-		_setFirstRoundContent( dataArray, callback_func );
+		_setFirstRoundContent( dataArray, callbackFunction );
 
 	};
 
@@ -204,4 +213,4 @@
 
 	};
 
-}));
+});
