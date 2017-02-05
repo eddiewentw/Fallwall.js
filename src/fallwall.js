@@ -15,6 +15,11 @@
 	const DOWN = 'down';
 	const UP = 'up';
 
+	const className = {
+		GRID: '.fw_grid',
+		COLUMN: '.fw_column',
+	};
+
 	let defaults = {
 		gridNumber: 20,
 		columnNumber: 1,
@@ -62,15 +67,15 @@
 			thisCode = thisCode.replace( `fallwall_#${j+1}`, obj[j] );
 		}
 
-		const targetColumn = $('.fw_column').eq( _getShortestColumn() );
+		const targetColumn = $(className.COLUMN).eq( _getShortestColumn() );
 		let creatingElement;
 		if( direction === UP ) {
 			targetColumn.prepend( thisCode );
-			creatingElement = targetColumn.find('.fw_grid').first();
+			creatingElement = targetColumn.find(className.GRID).first();
 		}
 		else if( direction === DOWN ) {
 			targetColumn.append( thisCode );
-			creatingElement = targetColumn.find('.fw_grid').last();
+			creatingElement = targetColumn.find(className.GRID).last();
 		}
 
 		/**
@@ -90,7 +95,7 @@
 
 		let heightArray = [];
 
-		$.each($('.fw_column'), (index, element) => {
+		$.each($(className.COLUMN), (index, element) => {
 			heightArray.push( element.offsetHeight );
 		});
 
@@ -134,7 +139,7 @@
 		this.append( colElements );
 
 		// Prepare CSS
-		this.find('.fw_column').css({
+		this.find(className.COLUMN).css({
 			'vertical-align': 'top',
 			display: 'inline-block',
 			width: `${Math.floor(1000/defaults.columnNumber)/10}%`,
