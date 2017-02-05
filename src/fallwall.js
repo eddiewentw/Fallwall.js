@@ -9,8 +9,11 @@
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jquery')) :
 	typeof define === 'function' && define.amd ? define(['jquery'], factory) :
 	root ? root.Fallwall = factory(jQuery) :
-	window.Fallwall =  factory(jQuery)
+	window.Fallwall = factory(jQuery)
 })(this, ($) => {
+
+	const DOWN = 'down';
+	const UP = 'up';
 
 	let defaults = {
 		gridNumber: 20,
@@ -28,7 +31,7 @@
 
 		for( let i = 0; i < defaults.gridNumber; i++ ) {
 			if( dataArray[i] ) {
-				_appendGrids( dataArray[i], 'down' );
+				_appendGrids( dataArray[i], DOWN );
 				defaults.currentGrid = i;
 			}
 			else {
@@ -61,11 +64,11 @@
 
 		const targetColumn = $('.fw_column').eq( _getShortestColumn() );
 		let creatingElement;
-		if( direction === 'up' ) {
+		if( direction === UP ) {
 			targetColumn.prepend( thisCode );
 			creatingElement = targetColumn.find('.fw_grid').first();
 		}
-		else {
+		else if( direction === DOWN ) {
 			targetColumn.append( thisCode );
 			creatingElement = targetColumn.find('.fw_grid').last();
 		}
@@ -162,7 +165,7 @@
 
 				if( defaults.dataArray[i] ) {
 
-					_appendGrids( defaults.dataArray[i], 'down' );
+					_appendGrids( defaults.dataArray[i], DOWN );
 					defaults.currentGrid = i;
 
 				}
@@ -217,7 +220,7 @@
 		}
 
 		// Add a new grid
-		_appendGrids( data, 'up' );
+		_appendGrids( data, UP );
 
 		if( callbackFunction ) {
 			if( typeof callbackFunction === 'function' ) {
