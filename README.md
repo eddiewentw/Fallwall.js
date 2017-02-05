@@ -1,4 +1,4 @@
-## Fallwall.js
+## Fallwall.js [![npm version](https://badge.fury.io/js/fallwall.svg)](https://badge.fury.io/js/fallwall)
 
 This is a jQuery plugin to make Fall Styles like Pinterest.
 
