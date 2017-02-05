@@ -1,7 +1,7 @@
 /*!
  * Fallwall.js
  *
- * Copyright © 2015 Eddie Wen | MIT license
+ * Copyright © 2017 Eddie Wen | MIT license
  * https://github.com/EddieWen-Taiwan/Fallwall.js
  */
 
