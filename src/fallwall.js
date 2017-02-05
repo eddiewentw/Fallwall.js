@@ -119,7 +119,7 @@
 		if( !dataArray ) {
 			throw new Error('missed data source');
 		}
-		if( !Array.isArray(dataArray) ) {
+		if( !Array.isArray(dataArray) || dataArray.length === 0 ) {
 			throw new Error('typeof dataArray is not correct');
 		}
 
