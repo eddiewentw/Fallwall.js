@@ -132,10 +132,7 @@
 		};
 
 		// Add columns
-		let colElements = '';
-		for( let i = 0; i < defaults.columnNumber; i++ ) {
-			colElements += '<div class=\'fw_column\'></div>';
-		}
+		let colElements = '<div class=\'fw_column\'></div>'.repeat(defaults.columnNumber);
 		this.append( colElements );
 
 		// Prepare CSS
