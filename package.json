@@ -13,7 +13,7 @@
     "Pinterest"
   ],
   "dependencies": {
-    "jquery": ">=2.0.0"
+    "jquery": "^3.1.1"
   },
   "author": "Eddie Wen <m20021991y@gmail.com> (http://eddiewen.me)",
   "homepage": "https://github.com/EddieWen-Taiwan/Fallwall.js#readme"
