@@ -107,7 +107,7 @@
 	 * Fallwall construtcor
 	 * Setup template and data source
 	 */
-	$.fn.fallwall_init = function( template, dataArray, options, callbackFunction ) {
+	$.fn.fallwall = function( template, dataArray, options, callbackFunction ) {
 
 		/**
 		 * check required parameters
