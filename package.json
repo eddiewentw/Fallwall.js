@@ -1,6 +1,6 @@
 {
   "name": "fallwall",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Fallwall.js is a jQuery plugin to make Fall Styles like Pinterest.",
   "scripts": {
     "dist": "gulp",
