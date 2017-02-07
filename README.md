@@ -84,9 +84,9 @@ Prepare your data like this array:
 
 ~~~javascript
 var fallwall_data = [
-	{ 0: "Eddie Wen",  1: "Hi~ I'm Eddie.", 2: "class_Wen"  },
-	{ 0: "Jason Liu",  1: "Hi~ I'm Jason.", 2: "class_Liu"  },
-	{ 0: "Steve Wang", 1: "Hi~ I'm Steve.", 2: "class_Wang" }
+	{ 0: 'Eddie Wen',  1: 'Hi~ I\'m Eddie.', 2: 'class_Wen'  },
+	{ 0: 'Jason Liu',  1: 'Hi~ I\'m Jason.', 2: 'class_Liu'  },
+	{ 0: 'Steve Wang', 1: 'Hi~ I\'m Steve.', 2: 'class_Wang' },
 ];
 ~~~
 
@@ -111,19 +111,6 @@ In this case, you will get this output:
 
 ----
 
-### Options
-
-* __gridNumber__: _Int_  
-How many grids do you want to generate everytime
-* __columnNumber__: _Int_  
-Number of column in your element
-* __defaultClass__: _String_  
-Default class you want be add on the grid.
-
-My default class is `'animated zoomIn'` in the [DEMO](http://github.eddiewen.me/Fallwall.js/) page. That's [Animate.css](http://daneden.github.io/animate.css/)'s class. You could use this way to build animation.
-
-----
-
 ### Functions
 
 #### fallwall()
@@ -136,11 +123,22 @@ Example：
 $('#element').fallwall( $('.template').html(), fallwall_data, {
 	gridNumber: 4,
 	columnNumber: 3,
-	defaultClass: 'animated zoomIn'
-}, function() {
-	alert('Init is finished');
+	defaultClass: 'animated zoomIn',
+}, () => {
+	console.log('Init is finished');
 });
 ~~~
+
+#### Options
+
+* __gridNumber__: _Int_  
+How many grids do you want to generate everytime
+* __columnNumber__: _Int_  
+Number of column in your element
+* __defaultClass__: _String_  
+Default class you want be add on the grid.
+
+My default class is `'animated zoomIn'` in the [DEMO](http://github.eddiewen.me/Fallwall.js/) page. That's [Animate.css](http://daneden.github.io/animate.css/)'s class. You could use this way to create animation.
 
 ----
 
@@ -155,8 +153,8 @@ This function will return a String, `NO_MORE_DATA` or `FINISHED`. The latter mea
 Example：
 
 ~~~javascript
-$('#element').loadMoreFw( function() {
-	console.log('LOAD');
+$('#element').loadMoreFw(() => {
+	console.log('LOADED');
 });
 ~~~
 
@@ -173,10 +171,10 @@ Example：
 
 ~~~javascript
 $('#element').addFwGrid({
-	0: "Mandy Chen",
-	1: "Hi~ I'm Mandy.",
-	2: "class_new"
-}, function() {
+	0: 'Mandy Chen',
+	1: 'Hi~ I\'m Mandy.',
+	2: 'class_new',
+}, () => {
 	console.log('ADD');
 });
 ~~~
