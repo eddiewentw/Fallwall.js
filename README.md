@@ -11,8 +11,9 @@ This is a jQuery plugin to make Fall Styles like Pinterest.
 Just clone or download the zip of this repository  
 or via [npm](https://www.npmjs.com/package/fallwall)
 
-~~~shell
-npm install --save fallwall
+~~~bash
+# npm install --save fallwall
+$ yarn add fallwall
 ~~~
 
 ### Setup
