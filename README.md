@@ -11,8 +11,9 @@ This is a jQuery plugin to make Fall Styles like Pinterest.
 Just clone or download the zip of this repository  
 or via [npm](https://www.npmjs.com/package/fallwall)
 
-~~~shell
-npm install --save fallwall
+~~~bash
+# npm install --save fallwall
+$ yarn add fallwall
 ~~~
 
 ### Setup
@@ -125,14 +126,14 @@ My default class is `'animated zoomIn'` in the [DEMO](http://github.eddiewen.me/
 
 ### Functions
 
-#### fallwall_init()
+#### fallwall()
 
-`fallwall_init( template, dataArray, options, callback ){}`
+`fallwall( template, dataArray, options, callback ){}`
 
 Example：
 
 ~~~javascript
-$('#element').fallwall_init( $('.template').html(), fallwall_data, {
+$('#element').fallwall( $('.template').html(), fallwall_data, {
 	gridNumber: 4,
 	columnNumber: 3,
 	defaultClass: 'animated zoomIn'
