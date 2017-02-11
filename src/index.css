@@ -25,6 +25,10 @@ a:hover {
 	border-top: 3px #c0c0c0 solid;
 }
 
+.template {
+	width: 350px;
+}
+
 .template,
 .fw_grid {
 	margin: 50px auto;
