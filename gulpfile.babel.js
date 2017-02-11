@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import htmlmin from 'gulp-htmlmin';
-import inlineCss from 'gulp-inline-css';
+import cssmin from 'gulp-cssmin';
 import concat from 'gulp-concat';
 import babel from 'gulp-babel';
 import uglify from 'gulp-uglify';
@@ -28,9 +28,6 @@ gulp.task('js', ['babel-main'], () => (
 
 gulp.task('html', ['js'], () => (
 	gulp.src('./src/index.html')
-		.pipe( inlineCss({
-			removeLinkTags: true,
-		}) )
 		.pipe( replace({ js: './bundle.js' }) )
 		.pipe( htmlmin({
 			collapseWhitespace: true,
@@ -39,9 +36,15 @@ gulp.task('html', ['js'], () => (
 		.pipe( gulp.dest('./') )
 ));
 
-gulp.task('clean', ['html'], () => (
+gulp.task('css', ['html'], () => (
+	gulp.src('./src/index.css')
+		.pipe( cssmin() )
+		.pipe( gulp.dest('./') )
+));
+
+gulp.task('clean', ['css'], () => (
 	gulp.src('./main.js')
 		.pipe(clean())
 ));
 
-gulp.task('default', ['babel-main', 'js', 'html', 'clean']);
+gulp.task('default', ['babel-main', 'js', 'html', 'css', 'clean']);
