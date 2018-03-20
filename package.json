@@ -4,7 +4,8 @@
   "description": "Fallwall.js is a jQuery plugin to make Fall Styles like Pinterest.",
   "scripts": {
     "dist": "gulp",
-    "test": "jest"
+    "test": "jest",
+    "release": "standard-version"
   },
   "repository": {
     "type": "git",
