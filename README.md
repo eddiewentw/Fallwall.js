@@ -1,4 +1,6 @@
-## Fallwall.js [![npm version](https://badge.fury.io/js/fallwall.svg)](https://badge.fury.io/js/fallwall)
+## Fallwall.js
+
+[![npm version](https://badge.fury.io/js/fallwall.svg)](https://badge.fury.io/js/fallwall)
 
 This is a jQuery plugin to make Fall Styles like Pinterest.
 
@@ -12,8 +14,9 @@ Just clone or download the zip of this repository
 or via [npm](https://www.npmjs.com/package/fallwall)
 
 ~~~bash
-# npm install --save fallwall
 $ yarn add fallwall
+
+# $ npm install --save fallwall
 ~~~
 
 ### Setup
