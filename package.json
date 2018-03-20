@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/EddieWen-Taiwan/Fallwall.js.git"
+    "url": "git+https://github.com/eddiewentw/Fallwall.js.git"
   },
   "main": "dist/fallwall.min.js",
   "keywords": [
@@ -18,7 +18,7 @@
   ],
   "author": "Eddie Wen <eddiewen.tw@gmail.com> (http://eddiewen.me)",
   "license": "MIT",
-  "homepage": "https://github.com/EddieWen-Taiwan/Fallwall.js#readme",
+  "homepage": "https://github.com/eddiewentw/Fallwall.js#readme",
   "dependencies": {
     "jquery": "^3.1.1"
   },
